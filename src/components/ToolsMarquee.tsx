@@ -101,6 +101,21 @@ export default function ToolsMarquee({ tools }: ToolsMarqueeProps) {
 
     // Mobile: Fixed grid layout with tap-to-show tooltip
     if (isMobile) {
+        // Get tooltip position based on column (0-3 for 4-column grid)
+        const getTooltipPosition = (index: number) => {
+            const col = index % 4;
+            if (col === 0) return "left-0"; // Left edge - align left
+            if (col === 3) return "right-0"; // Right edge - align right
+            return "left-1/2 -translate-x-1/2"; // Middle - center
+        };
+
+        const getArrowPosition = (index: number) => {
+            const col = index % 4;
+            if (col === 0) return "left-6"; // Arrow near left
+            if (col === 3) return "right-6"; // Arrow near right
+            return "left-1/2 -translate-x-1/2"; // Arrow center
+        };
+
         return (
             <div className="grid grid-cols-4 gap-4 py-4">
                 {tools.map((tool, index) => {
@@ -121,15 +136,15 @@ export default function ToolsMarquee({ tools }: ToolsMarqueeProps) {
                                 {tool.name}
                             </span>
 
-                            {/* Tooltip popup on tap */}
+                            {/* Tooltip popup on tap - positioned based on column */}
                             {isActive && tool.usage && (
-                                <div className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 z-50 animate-fade-in">
-                                    <div className="bg-[#191314] text-white px-3 py-2 rounded-xl shadow-xl min-w-[160px] max-w-[200px]">
-                                        <p className="text-xs text-gray-300 leading-relaxed text-center">
+                                <div className={`absolute ${getTooltipPosition(index)} bottom-full mb-2 z-50 animate-fade-in`}>
+                                    <div className="bg-[#191314] text-white px-3 py-2 rounded-xl shadow-xl w-[180px]">
+                                        <p className="text-xs text-gray-300 leading-relaxed">
                                             {tool.usage}
                                         </p>
                                     </div>
-                                    <div className="absolute left-1/2 -translate-x-1/2 -bottom-2 w-0 h-0 border-l-6 border-r-6 border-t-6 border-transparent border-t-[#191314]" />
+                                    <div className={`absolute ${getArrowPosition(index)} -bottom-2 w-0 h-0 border-l-[6px] border-r-[6px] border-t-[6px] border-transparent border-t-[#191314]`} />
                                 </div>
                             )}
                         </div>
