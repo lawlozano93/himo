@@ -1,4 +1,4 @@
-import ProjectCard from "@/components/ProjectCard";
+import ProjectsGrid from "@/components/ProjectsGrid";
 import Chip from "@/components/Chip";
 import ToolsMarquee from "@/components/ToolsMarquee";
 import FloatingIcons from "@/components/FloatingIcons";
@@ -81,17 +81,7 @@ export default async function Home() {
           <h2 className="text-3xl md:text-4xl font-bold text-[#191314] mb-12">
             Projects
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {projects.map((project) => (
-              <ProjectCard
-                key={project.id}
-                title={project.title}
-                description={project.description}
-                url={project.url}
-                isExternal={project.url.startsWith("http")}
-              />
-            ))}
-          </div>
+          <ProjectsGrid projects={projects} />
         </div>
       </section>
 
