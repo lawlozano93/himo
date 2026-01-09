@@ -1,10 +1,12 @@
+import React from "react";
+
 interface ToolIconProps {
     name: string;
     className?: string;
 }
 
 export function ToolIcon({ name, className = "w-8 h-8" }: ToolIconProps) {
-    const icons: Record<string, JSX.Element> = {
+    const icons: Record<string, React.ReactNode> = {
         antigravity: (
             <svg viewBox="0 0 24 24" className={className} fill="currentColor">
                 <path d="M12 2L2 19h20L12 2zm0 4l6.5 11h-13L12 6z" />
