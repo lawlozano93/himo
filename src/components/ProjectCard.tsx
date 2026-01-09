@@ -35,13 +35,17 @@ export default function ProjectCard({
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
-                    // Highlight when card is in the center portion of viewport
-                    setIsHighlighted(entry.isIntersecting && entry.intersectionRatio > 0.6);
+                    // Highlight when card is visible in center zone
+                    if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
+                        setIsHighlighted(true);
+                    } else if (!entry.isIntersecting || entry.intersectionRatio < 0.1) {
+                        setIsHighlighted(false);
+                    }
                 });
             },
             {
-                threshold: [0, 0.6, 1],
-                rootMargin: "-35% 0px -35% 0px", // Focus on center 30% of viewport
+                threshold: [0, 0.1, 0.3, 0.5, 1],
+                rootMargin: "-20% 0px -20% 0px", // Larger center zone (60% of viewport)
             }
         );
 
