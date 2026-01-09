@@ -99,25 +99,42 @@ export default function ToolsMarquee({ tools }: ToolsMarqueeProps) {
         return `${durations[index % durations.length]}s`;
     };
 
-    // Mobile: Fixed grid layout
+    // Mobile: Fixed grid layout with tap-to-show tooltip
     if (isMobile) {
         return (
             <div className="grid grid-cols-4 gap-4 py-4">
-                {tools.map((tool) => (
-                    <div
-                        key={tool.name}
-                        className={`flex flex-col items-center gap-2 transition-opacity duration-500 ${mounted ? "opacity-100" : "opacity-0"}`}
-                    >
-                        <div className="w-14 h-14 rounded-full bg-[#f4f4f4] flex items-center justify-center">
-                            <div className="text-[#191314] w-6 h-6">
-                                <ToolIcon name={tool.icon} className="w-full h-full" />
+                {tools.map((tool, index) => {
+                    const isActive = hoveredTool === index;
+
+                    return (
+                        <div
+                            key={tool.name}
+                            className={`relative flex flex-col items-center gap-2 transition-opacity duration-500 ${mounted ? "opacity-100" : "opacity-0"}`}
+                            onClick={() => setHoveredTool(isActive ? null : index)}
+                        >
+                            <div className={`w-14 h-14 rounded-full flex items-center justify-center transition-all duration-200 ${isActive ? "bg-[#ecf95a] scale-105" : "bg-[#f4f4f4]"}`}>
+                                <div className="text-[#191314] w-6 h-6">
+                                    <ToolIcon name={tool.icon} className="w-full h-full" />
+                                </div>
                             </div>
+                            <span className="text-xs text-[#666666] text-center leading-tight">
+                                {tool.name}
+                            </span>
+
+                            {/* Tooltip popup on tap */}
+                            {isActive && tool.usage && (
+                                <div className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 z-50 animate-fade-in">
+                                    <div className="bg-[#191314] text-white px-3 py-2 rounded-xl shadow-xl min-w-[160px] max-w-[200px]">
+                                        <p className="text-xs text-gray-300 leading-relaxed text-center">
+                                            {tool.usage}
+                                        </p>
+                                    </div>
+                                    <div className="absolute left-1/2 -translate-x-1/2 -bottom-2 w-0 h-0 border-l-6 border-r-6 border-t-6 border-transparent border-t-[#191314]" />
+                                </div>
+                            )}
                         </div>
-                        <span className="text-xs text-[#666666] text-center leading-tight">
-                            {tool.name}
-                        </span>
-                    </div>
-                ))}
+                    );
+                })}
             </div>
         );
     }
