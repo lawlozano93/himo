@@ -18,6 +18,113 @@ interface Position {
     y: number;
 }
 
+// Mobile component with scroll-based highlighting
+function MobileToolsGrid({ tools, mounted }: { tools: Tool[]; mounted: boolean }) {
+    const [activeRow, setActiveRow] = useState<number | null>(null);
+    const [tappedTool, setTappedTool] = useState<number | null>(null);
+    const rowRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+    // Group tools into rows of 4
+    const rows: Tool[][] = [];
+    for (let i = 0; i < tools.length; i += 4) {
+        rows.push(tools.slice(i, i + 4));
+    }
+
+    // Intersection Observer for scroll-based highlighting
+    useEffect(() => {
+        const observers: IntersectionObserver[] = [];
+
+        rowRefs.current.forEach((ref, rowIndex) => {
+            if (!ref) return;
+
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
+                            setActiveRow(rowIndex);
+                        }
+                    });
+                },
+                {
+                    threshold: 0.5,
+                    rootMargin: "-30% 0px -30% 0px", // Focus on center of viewport
+                }
+            );
+
+            observer.observe(ref);
+            observers.push(observer);
+        });
+
+        return () => observers.forEach((obs) => obs.disconnect());
+    }, [rows.length]);
+
+    const getTooltipPosition = (colIndex: number) => {
+        if (colIndex === 0) return "left-0";
+        if (colIndex === 3) return "right-0";
+        return "left-1/2 -translate-x-1/2";
+    };
+
+    const getArrowPosition = (colIndex: number) => {
+        if (colIndex === 0) return "left-6";
+        if (colIndex === 3) return "right-6";
+        return "left-1/2 -translate-x-1/2";
+    };
+
+    return (
+        <div className="py-4 space-y-4">
+            {rows.map((row, rowIndex) => (
+                <div
+                    key={rowIndex}
+                    ref={(el) => { rowRefs.current[rowIndex] = el; }}
+                    className="grid grid-cols-4 gap-4"
+                >
+                    {row.map((tool, colIndex) => {
+                        const globalIndex = rowIndex * 4 + colIndex;
+                        const isRowActive = activeRow === rowIndex;
+                        const isTapped = tappedTool === globalIndex;
+
+                        return (
+                            <div
+                                key={tool.name}
+                                className={`relative flex flex-col items-center gap-2 transition-opacity duration-500 ${mounted ? "opacity-100" : "opacity-0"}`}
+                                onClick={() => setTappedTool(isTapped ? null : globalIndex)}
+                            >
+                                <div
+                                    className={`w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 ${isTapped
+                                            ? "bg-[#ecf95a] scale-110"
+                                            : isRowActive
+                                                ? "bg-[#ecf95a] scale-105"
+                                                : "bg-[#f4f4f4]"
+                                        }`}
+                                >
+                                    <div className="text-[#191314] w-6 h-6">
+                                        <ToolIcon name={tool.icon} className="w-full h-full" />
+                                    </div>
+                                </div>
+                                <span className="text-xs text-[#666666] text-center leading-tight">
+                                    {tool.name}
+                                </span>
+
+                                {/* Tooltip on tap */}
+                                {isTapped && tool.usage && (
+                                    <div className={`absolute ${getTooltipPosition(colIndex)} bottom-full mb-2 z-50 animate-fade-in`}>
+                                        <div className="bg-[#191314] text-white px-3 py-2 rounded-xl shadow-xl w-[180px]">
+                                            <p className="text-xs text-gray-300 leading-relaxed">
+                                                {tool.usage}
+                                            </p>
+                                        </div>
+                                        <div className={`absolute ${getArrowPosition(colIndex)} -bottom-2 w-0 h-0 border-l-[6px] border-r-[6px] border-t-[6px] border-transparent border-t-[#191314]`} />
+                                    </div>
+                                )}
+                            </div>
+                        );
+                    })}
+                </div>
+            ))}
+        </div>
+    );
+}
+
 export default function ToolsMarquee({ tools }: ToolsMarqueeProps) {
     const [mounted, setMounted] = useState(false);
     const [positions, setPositions] = useState<Record<number, Position>>({});
@@ -99,59 +206,9 @@ export default function ToolsMarquee({ tools }: ToolsMarqueeProps) {
         return `${durations[index % durations.length]}s`;
     };
 
-    // Mobile: Fixed grid layout with tap-to-show tooltip
+    // Mobile: Fixed grid layout with scroll-based highlight
     if (isMobile) {
-        // Get tooltip position based on column (0-3 for 4-column grid)
-        const getTooltipPosition = (index: number) => {
-            const col = index % 4;
-            if (col === 0) return "left-0"; // Left edge - align left
-            if (col === 3) return "right-0"; // Right edge - align right
-            return "left-1/2 -translate-x-1/2"; // Middle - center
-        };
-
-        const getArrowPosition = (index: number) => {
-            const col = index % 4;
-            if (col === 0) return "left-6"; // Arrow near left
-            if (col === 3) return "right-6"; // Arrow near right
-            return "left-1/2 -translate-x-1/2"; // Arrow center
-        };
-
-        return (
-            <div className="grid grid-cols-4 gap-4 py-4">
-                {tools.map((tool, index) => {
-                    const isActive = hoveredTool === index;
-
-                    return (
-                        <div
-                            key={tool.name}
-                            className={`relative flex flex-col items-center gap-2 transition-opacity duration-500 ${mounted ? "opacity-100" : "opacity-0"}`}
-                            onClick={() => setHoveredTool(isActive ? null : index)}
-                        >
-                            <div className={`w-14 h-14 rounded-full flex items-center justify-center transition-all duration-200 ${isActive ? "bg-[#ecf95a] scale-105" : "bg-[#f4f4f4]"}`}>
-                                <div className="text-[#191314] w-6 h-6">
-                                    <ToolIcon name={tool.icon} className="w-full h-full" />
-                                </div>
-                            </div>
-                            <span className="text-xs text-[#666666] text-center leading-tight">
-                                {tool.name}
-                            </span>
-
-                            {/* Tooltip popup on tap - positioned based on column */}
-                            {isActive && tool.usage && (
-                                <div className={`absolute ${getTooltipPosition(index)} bottom-full mb-2 z-50 animate-fade-in`}>
-                                    <div className="bg-[#191314] text-white px-3 py-2 rounded-xl shadow-xl w-[180px]">
-                                        <p className="text-xs text-gray-300 leading-relaxed">
-                                            {tool.usage}
-                                        </p>
-                                    </div>
-                                    <div className={`absolute ${getArrowPosition(index)} -bottom-2 w-0 h-0 border-l-[6px] border-r-[6px] border-t-[6px] border-transparent border-t-[#191314]`} />
-                                </div>
-                            )}
-                        </div>
-                    );
-                })}
-            </div>
-        );
+        return <MobileToolsGrid tools={tools} mounted={mounted} />;
     }
 
     // Desktop: Scattered floating layout with drag
