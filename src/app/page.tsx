@@ -1,103 +1,143 @@
-import Image from "next/image";
+import ProjectCard from "@/components/ProjectCard";
+import Chip from "@/components/Chip";
+import ToolsMarquee from "@/components/ToolsMarquee";
+import FloatingIcons from "@/components/FloatingIcons";
+import Footer from "@/components/Footer";
+import { getFeaturedProjects } from "@/lib/data";
+import Link from "next/link";
 
-export default function Home() {
+// ISR: Revalidate every hour
+export const revalidate = 3600;
+
+const exploringChips = [
+  "AI implementation",
+  "Notion workflows",
+  "App prototyping",
+  "CS systems",
+  "Startup operations",
+];
+
+const tools = [
+  { name: "Antigravity", icon: "antigravity" },
+  { name: "Claude", icon: "claude" },
+  { name: "Cursor", icon: "cursor" },
+  { name: "ChatGPT", icon: "chatgpt" },
+  { name: "Notion", icon: "notion" },
+  { name: "Figma", icon: "figma" },
+  { name: "VS Code", icon: "vscode" },
+  { name: "Vercel", icon: "vercel" },
+  { name: "Supabase", icon: "supabase" },
+  { name: "Next.js", icon: "nextjs" },
+  { name: "Tailwind", icon: "tailwind" },
+  { name: "GitHub", icon: "github" },
+];
+
+export default async function Home() {
+  const projects = await getFeaturedProjects();
+
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <>
+      {/* Hero Section */}
+      <section className="min-h-screen flex flex-col justify-center px-6 pt-20 pb-12 relative overflow-hidden">
+        <div className="max-w-6xl mx-auto w-full">
+          {/* Massive "Himo" text */}
+          <h1 className="text-massive text-[#191314] animate-fade-in">
+            Himo
+          </h1>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
+          {/* Meaning + Description */}
+          <div className="mt-6 max-w-xl animate-fade-in-delayed">
+            <p className="text-lg text-[#666666] mb-4">
+              <span className="italic">Means Create in Waray</span>
+            </p>
+            <p className="text-xl md:text-2xl text-[#191314] leading-relaxed mb-6">
+              A collection of experience, app builds, and explorations of{" "}
+              <Link
+                href="/experience"
+                className="underline decoration-[#ecf95a] decoration-4 underline-offset-4 hover:bg-[#ecf95a] transition-colors px-1"
+              >
+                Lao
+              </Link>
+            </p>
+
+            {/* Status pill with pulsating dot */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#191314] text-white text-sm">
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#ecf95a] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#ecf95a]"></span>
+              </span>
+              Currently Customer Success Manager @ ThisFish
+            </div>
+          </div>
+        </div>
+
+        {/* Floating Icons */}
+        <FloatingIcons />
+      </section>
+
+      {/* Projects Section */}
+      <section id="projects" className="py-24 px-6 bg-[#f4f4f4]">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#191314] mb-12">
+            Projects
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {projects.map((project) => (
+              <ProjectCard
+                key={project.id}
+                title={project.title}
+                description={project.description}
+                url={project.url}
+                isExternal={project.url.startsWith("http")}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Currently Exploring */}
+      <section className="py-24 px-6">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#191314] mb-8">
+            Currently Exploring
+          </h2>
+          <div className="flex flex-wrap gap-3">
+            {exploringChips.map((chip) => (
+              <Chip key={chip} label={chip} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Tools Section - Antigravity style */}
+      <section className="py-24 px-6">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#191314] mb-4">
+            Tools I Use
+          </h2>
+          <p className="text-[#666666] mb-8 max-w-xl">
+            My daily toolkit for building, designing, and shipping.
+          </p>
+          <ToolsMarquee tools={tools} />
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section className="py-24 px-6 bg-[#ecf95a]">
+        <div className="max-w-6xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#191314] mb-6">
+            Let&apos;s connect
+          </h2>
           <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="mailto:lawlozano93@gmail.com"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#191314] text-white font-semibold hover:bg-[#333] transition-colors"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
+            lawlozano93@gmail.com
           </a>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </section>
+
+      <Footer />
+    </>
   );
 }
