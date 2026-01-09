@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { CardContainer, CardBody, CardItem } from "@/components/ui/3d-card";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 interface ProjectCardProps {
     title: string;
@@ -18,6 +18,8 @@ export default function ProjectCard({
     isExternal = false,
 }: ProjectCardProps) {
     const [isMobile, setIsMobile] = useState(false);
+    const [isHighlighted, setIsHighlighted] = useState(false);
+    const cardRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -26,19 +28,45 @@ export default function ProjectCard({
         return () => window.removeEventListener("resize", checkMobile);
     }, []);
 
-    // Simple flat card for mobile
+    // Intersection Observer for scroll-based highlighting on mobile
+    useEffect(() => {
+        if (!isMobile || !cardRef.current) return;
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    // Highlight when card is in the center portion of viewport
+                    setIsHighlighted(entry.isIntersecting && entry.intersectionRatio > 0.6);
+                });
+            },
+            {
+                threshold: [0, 0.6, 1],
+                rootMargin: "-35% 0px -35% 0px", // Focus on center 30% of viewport
+            }
+        );
+
+        observer.observe(cardRef.current);
+        return () => observer.disconnect();
+    }, [isMobile]);
+
+    // Simple flat card for mobile with scroll-based highlight
     const MobileCardContent = () => (
-        <div className="bg-[#f4f4f4] rounded-2xl p-5 h-full flex flex-col relative min-h-[140px]">
+        <div
+            ref={cardRef}
+            className={`rounded-2xl p-5 h-full flex flex-col relative min-h-[140px] transition-all duration-300 ${isHighlighted ? "bg-[#ecf95a] scale-[1.02]" : "bg-[#f4f4f4]"
+                }`}
+        >
             <h3 className="text-lg font-bold text-[#191314] mb-2">{title}</h3>
             <p className="text-[#666666] text-sm leading-relaxed pr-8 flex-grow">{description}</p>
-            <div className="absolute bottom-4 right-4 w-8 h-8 rounded-full bg-white flex items-center justify-center">
+            <div className={`absolute bottom-4 right-4 w-8 h-8 rounded-full flex items-center justify-center transition-colors ${isHighlighted ? "bg-[#191314]" : "bg-white"
+                }`}>
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
                     strokeWidth={2}
                     stroke="currentColor"
-                    className="w-4 h-4 text-[#191314]"
+                    className={`w-4 h-4 transition-colors ${isHighlighted ? "text-white" : "text-[#191314]"}`}
                 >
                     <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
                 </svg>
