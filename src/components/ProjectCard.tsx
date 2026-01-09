@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { CardContainer, CardBody, CardItem } from "@/components/ui/3d-card";
 
 interface ProjectCardProps {
     title: string;
@@ -14,34 +17,46 @@ export default function ProjectCard({
     isExternal = false,
 }: ProjectCardProps) {
     const CardContent = () => (
-        <div className="p-6">
-            <div className="flex items-start justify-between gap-3 mb-3">
-                <h3 className="text-lg font-semibold text-[#191314] group-hover:text-[#666666] transition-colors">
-                    {title}
-                </h3>
-                <div className="w-10 h-10 rounded-xl bg-[#ecf95a] flex items-center justify-center flex-shrink-0 group-hover:bg-[#191314] transition-colors">
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth={2}
-                        stroke="currentColor"
-                        className="w-5 h-5 text-[#191314] group-hover:text-white transition-colors"
-                    >
-                        <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"
-                        />
-                    </svg>
-                </div>
-            </div>
-            <p className="text-[#666666] leading-relaxed">{description}</p>
-        </div>
+        <CardContainer containerClassName="w-full h-full">
+            <CardBody className="bg-[#f4f4f4] group-hover:bg-[#ecf95a] rounded-2xl p-5 h-full flex flex-col relative transition-colors duration-300 min-h-[140px]">
+                {/* Title */}
+                <CardItem translateZ={30}>
+                    <h3 className="text-lg font-bold text-[#191314] mb-2">
+                        {title}
+                    </h3>
+                </CardItem>
+
+                {/* Description */}
+                <CardItem translateZ={20} className="flex-grow">
+                    <p className="text-[#666666] text-sm leading-relaxed pr-8">
+                        {description}
+                    </p>
+                </CardItem>
+
+                {/* Redirect icon - bottom right */}
+                <CardItem translateZ={50} className="!w-auto absolute bottom-4 right-4">
+                    <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center group-hover:bg-[#191314] transition-colors">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={2}
+                            stroke="currentColor"
+                            className="w-4 h-4 text-[#191314] group-hover:text-white transition-colors"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"
+                            />
+                        </svg>
+                    </div>
+                </CardItem>
+            </CardBody>
+        </CardContainer>
     );
 
-    const cardClasses =
-        "group block bg-white rounded-2xl border border-[#e5e5e5] hover:border-[#191314] hover:shadow-xl transition-all";
+    const wrapperClasses = "group block h-full";
 
     if (isExternal) {
         return (
@@ -49,7 +64,7 @@ export default function ProjectCard({
                 href={url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={cardClasses}
+                className={wrapperClasses}
             >
                 <CardContent />
             </a>
@@ -57,7 +72,7 @@ export default function ProjectCard({
     }
 
     return (
-        <Link href={url} className={cardClasses}>
+        <Link href={url} className={wrapperClasses}>
             <CardContent />
         </Link>
     );

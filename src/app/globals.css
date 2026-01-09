@@ -146,6 +146,10 @@ a,
   }
 }
 
+.animate-float-tool {
+  animation: floatWave 3.5s ease-in-out infinite;
+}
+
 /* Massive text styling */
 .text-massive {
   font-size: clamp(4rem, 20vw, 12rem);

@@ -18,18 +18,18 @@ const exploringChips = [
 ];
 
 const tools = [
-  { name: "Antigravity", icon: "antigravity" },
-  { name: "Claude", icon: "claude" },
-  { name: "Cursor", icon: "cursor" },
-  { name: "ChatGPT", icon: "chatgpt" },
-  { name: "Notion", icon: "notion" },
-  { name: "Figma", icon: "figma" },
-  { name: "VS Code", icon: "vscode" },
-  { name: "Vercel", icon: "vercel" },
-  { name: "Supabase", icon: "supabase" },
-  { name: "Next.js", icon: "nextjs" },
-  { name: "Tailwind", icon: "tailwind" },
-  { name: "GitHub", icon: "github" },
+  { name: "Antigravity", icon: "antigravity", usage: "AI-powered coding assistant for complex development tasks" },
+  { name: "Claude", icon: "claude", usage: "Strategic thinking, writing, and code review partner" },
+  { name: "Cursor", icon: "cursor", usage: "AI-first code editor for rapid development" },
+  { name: "ChatGPT", icon: "chatgpt", usage: "Research, brainstorming, and quick answers" },
+  { name: "Notion", icon: "notion", usage: "Project management, documentation, and knowledge base" },
+  { name: "Figma", icon: "figma", usage: "UI/UX design and prototyping" },
+  { name: "VS Code", icon: "vscode", usage: "Primary code editor with extensions" },
+  { name: "Vercel", icon: "vercel", usage: "Deployment and hosting for web projects" },
+  { name: "Supabase", icon: "supabase", usage: "Backend-as-a-service for databases and auth" },
+  { name: "Next.js", icon: "nextjs", usage: "React framework for production apps" },
+  { name: "Tailwind", icon: "tailwind", usage: "Utility-first CSS for rapid styling" },
+  { name: "GitHub", icon: "github", usage: "Version control and collaboration" },
 ];
 
 export default async function Home() {
@@ -76,12 +76,12 @@ export default async function Home() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-24 px-6 bg-[#f4f4f4]">
+      <section id="projects" className="py-24 px-6">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-[#191314] mb-12">
             Projects
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {projects.map((project) => (
               <ProjectCard
                 key={project.id}
@@ -109,13 +109,13 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Tools Section - Antigravity style */}
+      {/* Tools Section - Animated tooltips */}
       <section className="py-24 px-6">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-[#191314] mb-4">
             Tools I Use
           </h2>
-          <p className="text-[#666666] mb-8 max-w-xl">
+          <p className="text-[#666666] mb-12 max-w-xl">
             My daily toolkit for building, designing, and shipping.
           </p>
           <ToolsMarquee tools={tools} />

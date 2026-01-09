@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import Footer from "@/components/Footer";
+import { ProfileIdCard } from "@/components/ProfileIdCard";
 
 export const metadata: Metadata = {
     title: "Human of Himo - Lawrrence Lozano",
@@ -132,7 +133,7 @@ export default function ExperiencePage() {
         <>
             {/* Header */}
             <section className="pt-28 pb-12 px-6">
-                <div className="max-w-4xl mx-auto">
+                <div className="max-w-5xl mx-auto">
                     <Link
                         href="/"
                         className="inline-flex items-center gap-2 text-[#666666] hover:text-[#191314] transition-colors mb-8"
@@ -154,57 +155,48 @@ export default function ExperiencePage() {
                         Back to Himo
                     </Link>
 
-                    <h1 className="text-4xl md:text-5xl font-bold text-[#191314] mb-2">
-                        Human of Himo
-                    </h1>
-                    <p className="text-2xl text-[#191314] font-semibold mb-6">
-                        Lawrrence Lozano
-                    </p>
-                    <p className="text-[#666666] text-base leading-relaxed max-w-3xl mb-6">
-                        Strategic and results driven Customer Success Manager with a strong foundation in software engineering leadership and operational excellence. Specialized in bridging the gap between complex technical systems and measurable business outcomes for enterprise clients in the B2B SaaS space. Skilled at overseeing digital transformation and process automation initiatives, ensuring that AI powered solutions are effectively implemented and adopted to drive long term value.
-                    </p>
-                    <p className="text-[#666666] text-base leading-relaxed max-w-3xl mb-6">
-                        Focused on strategic partnership and cross functional collaboration, I leverage my background in engineering and project management to align technology with organizational goals. I am dedicated to fostering customer growth and scaling business impact while continuously evolving alongside the organizations I serve. I aim to drive meaningful innovation and help take the business to the next level by delivering solutions that are both actionable and sustainable.
-                    </p>
+                    <div className="flex flex-col lg:flex-row gap-12 items-start">
+                        {/* ID Card */}
+                        <div className="flex-shrink-0">
+                            <ProfileIdCard
+                                name="Lawrrence Lozano"
+                                title="Customer Success Manager"
+                                email="lawlozano93@gmail.com"
+                                location="Cebu City, Philippines"
+                                phone="+63 998 596 6173"
+                            />
+                        </div>
 
-                    {/* Contact Info */}
-                    <div className="flex flex-wrap gap-4 text-sm">
-                        <a href={`mailto:${contact.email}`} className="flex items-center gap-2 text-[#666666] hover:text-[#191314] transition-colors">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
-                            </svg>
-                            {contact.email}
-                        </a>
-                        <span className="flex items-center gap-2 text-[#666666]">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
-                            </svg>
-                            {contact.location}
-                        </span>
-                    </div>
-                </div>
-            </section>
+                        {/* Text content */}
+                        <div className="flex-1">
+                            <h1 className="text-4xl md:text-5xl font-bold text-[#191314] mb-4">
+                                Human of Himo
+                            </h1>
+                            <p className="text-[#666666] text-base leading-relaxed mb-4">
+                                Strategic and results driven Customer Success Manager with a strong foundation in software engineering leadership and operational excellence. Specialized in bridging the gap between complex technical systems and measurable business outcomes for enterprise clients in the B2B SaaS space.
+                            </p>
+                            <p className="text-[#666666] text-base leading-relaxed mb-6">
+                                Focused on strategic partnership and cross functional collaboration, I leverage my background in engineering and project management to align technology with organizational goals. I am dedicated to fostering customer growth and scaling business impact while continuously evolving alongside the organizations I serve.
+                            </p>
 
-            {/* Skills */}
-            <section className="py-12 px-6 bg-[#f4f4f4]">
-                <div className="max-w-4xl mx-auto">
-                    <h2 className="text-xl font-bold text-[#191314] mb-6">Skills</h2>
-                    <div className="flex flex-wrap gap-2">
-                        {skills.map((skill) => (
-                            <span
-                                key={skill}
-                                className="px-4 py-2 bg-white rounded-full text-sm font-medium text-[#191314] border border-[#e5e5e5]"
-                            >
-                                {skill}
-                            </span>
-                        ))}
+                            {/* Skills inline */}
+                            <div className="flex flex-wrap gap-2">
+                                {skills.map((skill) => (
+                                    <span
+                                        key={skill}
+                                        className="px-3 py-1.5 bg-[#f4f4f4] rounded-full text-sm font-medium text-[#191314] hover:bg-[#ecf95a] transition-colors cursor-default"
+                                    >
+                                        {skill}
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
 
             {/* Work Experience */}
-            <section className="py-16 px-6">
+            <section className="py-16 px-6 bg-[#f4f4f4]">
                 <div className="max-w-4xl mx-auto">
                     <h2 className="text-2xl font-bold text-[#191314] mb-10">
                         Work Experience
