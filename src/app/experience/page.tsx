@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import Footer from "@/components/Footer";
 import { ProfileIdCard } from "@/components/ProfileIdCard";
+import { Timeline } from "@/components/ui/timeline";
 
 export const metadata: Metadata = {
     title: "Human of Himo - Lawrrence Lozano",
@@ -195,50 +196,47 @@ export default function ExperiencePage() {
                 </div>
             </section>
 
-            {/* Work Experience */}
-            <section className="py-16 px-6 bg-[#f4f4f4]">
-                <div className="max-w-4xl mx-auto">
-                    <h2 className="text-2xl font-bold text-[#191314] mb-10">
+            {/* Work Experience Timeline */}
+            <section className="py-16 px-6 bg-white">
+                <div className="max-w-5xl mx-auto">
+                    <h2 className="text-2xl font-bold text-[#191314] mb-4 px-4 md:px-10">
                         Work Experience
                     </h2>
-                    <div className="space-y-12">
-                        {experience.map((job, index) => (
-                            <div
-                                key={index}
-                                className="relative pl-8 border-l-2 border-[#e5e5e5]"
-                            >
-                                <div className="absolute -left-2.5 top-0 w-5 h-5 rounded-full bg-[#ecf95a] border-4 border-white" />
+                    <Timeline
+                        data={experience.map((job) => ({
+                            title: job.period.split(" - ")[0].split(" ").pop() || job.period,
+                            content: (
+                                <div className="bg-[#f4f4f4] rounded-2xl p-6 mb-8">
+                                    <div className="mb-4">
+                                        <h3 className="text-xl font-bold text-[#191314] mb-2">
+                                            {job.role}
+                                        </h3>
+                                        <div className="flex flex-wrap gap-2 items-center mb-2">
+                                            <span className="bg-[#ecf95a] px-3 py-1 rounded-full text-sm font-medium text-[#191314]">
+                                                {job.company}
+                                            </span>
+                                            <span className="text-sm text-[#666666]">
+                                                {job.location}
+                                            </span>
+                                        </div>
+                                        <p className="text-sm text-[#666666]">{job.period}</p>
+                                    </div>
 
-                                {/* Header */}
-                                <div className="mb-4">
-                                    <h3 className="text-xl font-bold text-[#191314] mb-1">
-                                        {job.role}
-                                    </h3>
-                                    <p className="mb-1">
-                                        <span className="bg-[#ecf95a] px-2 py-0.5 rounded text-sm font-medium text-[#191314]">
-                                            {job.company}
-                                        </span>
-                                    </p>
-                                    <p className="text-sm text-[#666666]">
-                                        {job.period} · {job.location}
-                                    </p>
+                                    <ul className="space-y-3">
+                                        {job.bullets.map((bullet, i) => (
+                                            <li
+                                                key={i}
+                                                className="text-[#666666] text-sm leading-relaxed flex items-start gap-3"
+                                            >
+                                                <span className="w-1.5 h-1.5 rounded-full bg-[#ecf95a] mt-1.5 flex-shrink-0" />
+                                                {bullet}
+                                            </li>
+                                        ))}
+                                    </ul>
                                 </div>
-
-                                {/* Uniform bullet points */}
-                                <ul className="space-y-2">
-                                    {job.bullets.map((bullet, i) => (
-                                        <li
-                                            key={i}
-                                            className="text-[#666666] text-sm leading-relaxed flex items-start gap-3"
-                                        >
-                                            <span className="w-1.5 h-1.5 rounded-full bg-[#ecf95a] mt-1.5 flex-shrink-0" />
-                                            {bullet}
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        ))}
-                    </div>
+                            ),
+                        }))}
+                    />
                 </div>
             </section>
 
