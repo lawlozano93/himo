@@ -7,6 +7,8 @@ interface Project {
     id: string;
     title: string;
     description: string;
+    extendedDescription: string;
+    badge: string;
     url: string;
 }
 
@@ -73,11 +75,16 @@ export default function ProjectsGrid({ projects }: ProjectsGridProps) {
                 const CardContent = (
                     <div
                         ref={(el) => { cardRefs.current[index] = el; }}
-                        className={`rounded-2xl p-5 h-full flex flex-col relative min-h-[140px] transition-all duration-300 group ${isHighlighted ? "bg-[#ecf95a] scale-[1.02]" : "bg-[#f4f4f4] hover:bg-[#ecf95a]"
+                        className={`rounded-2xl p-5 h-full flex flex-col relative min-h-[180px] transition-all duration-300 group ${isHighlighted ? "bg-[#ecf95a] scale-[1.02]" : "bg-[#f4f4f4] hover:bg-[#ecf95a]"
                             }`}
                     >
+                        {/* Badge */}
+                        <span className={`inline-flex self-start items-center px-2.5 py-1 rounded-full text-xs font-medium mb-3 transition-colors ${isHighlighted ? "bg-[#191314] text-white" : "bg-white text-[#191314] group-hover:bg-[#191314] group-hover:text-white"
+                            }`}>
+                            {project.badge}
+                        </span>
                         <h3 className="text-lg font-bold text-[#191314] mb-2">{project.title}</h3>
-                        <p className="text-[#666666] text-sm leading-relaxed pr-8 flex-grow">{project.description}</p>
+                        <p className="text-[#666666] text-sm leading-relaxed pr-8 flex-grow">{project.extendedDescription}</p>
                         <div className={`absolute bottom-4 right-4 w-8 h-8 rounded-full flex items-center justify-center transition-colors ${isHighlighted ? "bg-[#191314]" : "bg-white"
                             }`}>
                             <svg

@@ -4,6 +4,8 @@ export interface Project {
     title: string;
     slug: string;
     description: string;
+    extendedDescription: string;
+    badge: string;
     url: string;
     featured: boolean;
     published_at: string;
@@ -25,7 +27,9 @@ const projects: Project[] = [
         id: "1",
         title: "Bubu",
         slug: "bubu",
-        description: "Active app prototype exploring AI-driven UX patterns.",
+        description: "Exploring how AI can enhance customer experiences without creating friction.",
+        extendedDescription: "Exploring how AI can enhance customer experiences without creating friction. Built with NextJS. Active prototype showing real UX patterns in action.",
+        badge: "Live App",
         url: "https://bubu.himo.site",
         featured: true,
         published_at: new Date().toISOString(),
@@ -34,7 +38,9 @@ const projects: Project[] = [
         id: "2",
         title: "App Experiments",
         slug: "experiments",
-        description: "AI implementation across real-world use cases.",
+        description: "A collection of AI integrations built for real startup problems.",
+        extendedDescription: "A collection of AI integrations built for real startup problems—from customer feedback analysis to workflow automation. Each includes the thinking and decision-making behind the implementation.",
+        badge: "Case Studies",
         url: "/experiments",
         featured: true,
         published_at: new Date().toISOString(),
@@ -43,7 +49,9 @@ const projects: Project[] = [
         id: "3",
         title: "Notion Portfolio",
         slug: "notion",
-        description: "Startup workflow systems at scale.",
+        description: "Database-driven systems designed for startup operations teams.",
+        extendedDescription: "Database-driven systems designed for startup operations teams. Covers customer lifecycle management, task automation, and reporting dashboards. Available as open templates.",
+        badge: "Templates",
         url: "/notion",
         featured: true,
         published_at: new Date().toISOString(),
@@ -52,7 +60,9 @@ const projects: Project[] = [
         id: "4",
         title: "Voice in the Noise",
         slug: "voice",
-        description: "Essays on code, creativity, and building in public.",
+        description: "Essays exploring the intersection of customer success, AI, and product thinking.",
+        extendedDescription: "Essays exploring the intersection of customer success, AI, and product thinking. Published bi-weekly; insights from building at scale and leading teams.",
+        badge: "Essays",
         url: "https://voiceinthenoise.com",
         featured: true,
         published_at: new Date().toISOString(),

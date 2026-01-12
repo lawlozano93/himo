@@ -1,7 +1,9 @@
 import ProjectsGrid from "@/components/ProjectsGrid";
 import Chip from "@/components/Chip";
-import ToolsMarquee from "@/components/ToolsMarquee";
 import FloatingIcons from "@/components/FloatingIcons";
+import HeroToolIcons from "@/components/HeroToolIcons";
+import MobileToolsFloating from "@/components/MobileToolsFloating";
+import SubtlePattern from "@/components/SubtlePattern";
 import Footer from "@/components/Footer";
 import { getFeaturedProjects } from "@/lib/data";
 import Link from "next/link";
@@ -9,27 +11,12 @@ import Link from "next/link";
 // ISR: Revalidate every hour
 export const revalidate = 3600;
 
-const exploringChips = [
-  "AI implementation",
-  "Notion workflows",
-  "App prototyping",
-  "CS systems",
-  "Startup operations",
-];
-
-const tools = [
-  { name: "Antigravity", icon: "antigravity", usage: "AI-powered coding assistant for complex development tasks" },
-  { name: "Claude", icon: "claude", usage: "Strategic thinking, writing, and code review partner" },
-  { name: "Cursor", icon: "cursor", usage: "AI-first code editor for rapid development" },
-  { name: "ChatGPT", icon: "chatgpt", usage: "Research, brainstorming, and quick answers" },
-  { name: "Notion", icon: "notion", usage: "Project management, documentation, and knowledge base" },
-  { name: "Figma", icon: "figma", usage: "UI/UX design and prototyping" },
-  { name: "VS Code", icon: "vscode", usage: "Primary code editor with extensions" },
-  { name: "Vercel", icon: "vercel", usage: "Deployment and hosting for web projects" },
-  { name: "Supabase", icon: "supabase", usage: "Backend-as-a-service for databases and auth" },
-  { name: "Next.js", icon: "nextjs", usage: "React framework for production apps" },
-  { name: "Tailwind", icon: "tailwind", usage: "Utility-first CSS for rapid styling" },
-  { name: "GitHub", icon: "github", usage: "Version control and collaboration" },
+const focusAreaChips = [
+  "AI-driven UX and automation",
+  "Notion systems for operations",
+  "Customer success workflows",
+  "App prototyping and experimentation",
+  "Startup scaling patterns",
 ];
 
 export default async function Home() {
@@ -48,36 +35,56 @@ export default async function Home() {
           {/* Meaning + Description */}
           <div className="mt-6 max-w-xl animate-fade-in-delayed">
             <p className="text-lg text-[#666666] mb-4">
-              <span className="italic">Means Create in Waray</span>
+              <span className="italic">means Create in Waray</span>
             </p>
-            <p className="text-xl md:text-2xl text-[#191314] leading-relaxed mb-6">
-              A collection of experience, app builds, and explorations of{" "}
-              <Link
-                href="/experience"
-                className="underline decoration-[#ecf95a] decoration-4 underline-offset-4 hover:bg-[#ecf95a] transition-colors px-1"
-              >
-                Lao
-              </Link>
+            <p className="text-xl md:text-2xl text-[#191314] leading-relaxed mb-2">
+              Work curated and built by{" "}
+              <span className="relative group inline-block">
+                <Link
+                  href="/experience"
+                  className="underline decoration-[#ecf95a] decoration-4 underline-offset-4 hover:bg-[#ecf95a] transition-colors px-1"
+                >
+                  Lao
+                </Link>
+                {/* Hover tooltip */}
+                <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 px-3 py-1.5 bg-[#191314] text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+                  Learn about the human behind Himo
+                  <span className="absolute left-1/2 -translate-x-1/2 top-full w-0 h-0 border-l-[6px] border-r-[6px] border-t-[6px] border-transparent border-t-[#191314]"></span>
+                </span>
+              </span>.
+            </p>
+            <p className="text-lg text-[#666666] mb-6">
+              Translating technical systems and team dynamics into value.
             </p>
 
             {/* Status pill with pulsating dot */}
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#191314] text-white text-sm">
-              <span className="relative flex h-2.5 w-2.5">
+              <span className="relative flex h-2.5 w-2.5 shrink-0">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#ecf95a] opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#ecf95a]"></span>
               </span>
-              Currently Customer Success Manager @ ThisFish
+              <span className="hidden md:inline">Currently Customer Success Manager @ ThisFish</span>
+              <span className="md:hidden">Currently CSM @ ThisFish</span>
+            </div>
+
+            {/* Mobile Tools Floating - shows only on mobile, below status badge */}
+            <div className="md:hidden relative h-64 mt-4">
+              <MobileToolsFloating />
             </div>
           </div>
         </div>
 
         {/* Floating Icons */}
         <FloatingIcons />
+
+        {/* Hero Tool Icons - draggable tools showcase */}
+        <HeroToolIcons />
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-24 px-6">
-        <div className="max-w-6xl mx-auto">
+      <section id="projects" className="py-24 px-6 relative">
+        <SubtlePattern variant="shapes" />
+        <div className="max-w-6xl mx-auto relative z-10">
           <h2 className="text-3xl md:text-4xl font-bold text-[#191314] mb-12">
             Projects
           </h2>
@@ -85,30 +92,21 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Currently Exploring */}
-      <section className="py-24 px-6">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#191314] mb-8">
-            Currently Exploring
+      {/* Focus Areas */}
+      <section className="py-24 px-6 relative">
+        <SubtlePattern variant="dots" />
+        <div className="max-w-6xl mx-auto relative z-10">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#191314] mb-2">
+            Focus Areas
           </h2>
+          <p className="text-[#666666] mb-8">
+            What shapes the work on Himo:
+          </p>
           <div className="flex flex-wrap gap-3">
-            {exploringChips.map((chip) => (
+            {focusAreaChips.map((chip) => (
               <Chip key={chip} label={chip} />
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Tools Section - Animated tooltips */}
-      <section className="py-24 px-6">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#191314] mb-4">
-            Tools I Use
-          </h2>
-          <p className="text-[#666666] mb-12 max-w-xl">
-            My daily toolkit for building, designing, and shipping.
-          </p>
-          <ToolsMarquee tools={tools} />
         </div>
       </section>
 
@@ -131,3 +129,4 @@ export default async function Home() {
     </>
   );
 }
+

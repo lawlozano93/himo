@@ -3,6 +3,7 @@ import Link from "next/link";
 import Footer from "@/components/Footer";
 import { ProfileIdCard } from "@/components/ProfileIdCard";
 import { Timeline } from "@/components/ui/timeline";
+import SubtlePattern from "@/components/SubtlePattern";
 
 export const metadata: Metadata = {
     title: "Human of Himo - Lawrrence Lozano",
@@ -133,8 +134,9 @@ export default function ExperiencePage() {
     return (
         <>
             {/* Header */}
-            <section className="pt-28 pb-12 px-6">
-                <div className="max-w-5xl mx-auto">
+            <section className="pt-28 pb-12 px-6 relative">
+                <SubtlePattern variant="shapes" />
+                <div className="max-w-5xl mx-auto relative z-10">
                     <Link
                         href="/"
                         className="inline-flex items-center gap-2 text-[#666666] hover:text-[#191314] transition-colors mb-8"
@@ -196,17 +198,48 @@ export default function ExperiencePage() {
                 </div>
             </section>
 
-            {/* Work Experience Timeline */}
-            <section className="py-16 px-6 bg-white">
+            {/* How This Background Shapes Himo */}
+            <section className="py-12 px-6 bg-[#f4f4f4]">
                 <div className="max-w-5xl mx-auto">
+                    <h2 className="text-2xl font-bold text-[#191314] mb-6">
+                        How This Background Shapes Himo
+                    </h2>
+                    <p className="text-[#666666] text-base leading-relaxed mb-6">
+                        Started as an engineer building applications. Became a project manager understanding how teams ship. Then led engineering teams at scale. Now translating all of that into customer success and patterns other teams can use.
+                    </p>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                        <div className="flex items-start gap-3">
+                            <span className="text-[#ecf95a] text-xl">✓</span>
+                            <p className="text-[#666666] text-sm">Understanding what&apos;s technically feasible (and what&apos;s not)</p>
+                        </div>
+                        <div className="flex items-start gap-3">
+                            <span className="text-[#ecf95a] text-xl">✓</span>
+                            <p className="text-[#666666] text-sm">Managing the chaos of building and shipping at scale</p>
+                        </div>
+                        <div className="flex items-start gap-3">
+                            <span className="text-[#ecf95a] text-xl">✓</span>
+                            <p className="text-[#666666] text-sm">Knowing what customer success and operations teams actually need</p>
+                        </div>
+                        <div className="flex items-start gap-3">
+                            <span className="text-[#ecf95a] text-xl">✓</span>
+                            <p className="text-[#666666] text-sm">Prototyping ideas quickly without getting stuck in analysis</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Work Experience Timeline */}
+            <section className="py-16 px-6 bg-white relative">
+                <SubtlePattern variant="grid" />
+                <div className="max-w-5xl mx-auto relative z-10">
                     <h2 className="text-2xl font-bold text-[#191314] mb-4 px-4 md:px-10">
                         Work Experience
                     </h2>
                     <Timeline
-                        data={experience.map((job) => ({
+                        data={experience.map((job, index) => ({
                             title: job.period.split(" - ")[0].split(" ").pop() || job.period,
                             content: (
-                                <div className="bg-[#f4f4f4] rounded-2xl p-6 mb-8">
+                                <div key={index} className="bg-[#f4f4f4] rounded-2xl p-6 mb-8">
                                     <div className="mb-4">
                                         <h3 className="text-xl font-bold text-[#191314] mb-2">
                                             {job.role}
