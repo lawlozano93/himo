@@ -21,51 +21,51 @@ export interface Post {
     published_at: string;
 }
 
+// Project categories for structured display
+export type ProjectCategory = "ai-driven" | "operations";
+
+export interface ProjectWithCategory extends Project {
+    category: ProjectCategory;
+    categoryLabel: string;
+}
+
 // Static data (will be replaced with Supabase later)
 const projects: Project[] = [
     {
         id: "1",
-        title: "Bubu",
-        slug: "bubu",
-        description: "Exploring how AI can enhance customer experiences without creating friction.",
-        extendedDescription: "Exploring how AI can enhance customer experiences without creating friction. Built with NextJS. Active prototype showing real UX patterns in action.",
-        badge: "Live App",
-        url: "https://bubu.himo.site",
-        featured: true,
-        published_at: new Date().toISOString(),
-    },
-    {
-        id: "2",
         title: "App Experiments",
         slug: "experiments",
         description: "A collection of AI integrations built for real startup problems.",
-        extendedDescription: "A collection of AI integrations built for real startup problems—from customer feedback analysis to workflow automation. Each includes the thinking and decision-making behind the implementation.",
+        extendedDescription: "Exploring how AI solves real startup problems. A collection of experiments including Bubu (AI-driven onboarding), customer analytics, and more.",
         badge: "Case Studies",
         url: "/experiments",
         featured: true,
         published_at: new Date().toISOString(),
     },
     {
-        id: "3",
-        title: "Notion Portfolio",
+        id: "2",
+        title: "Notion Systems",
         slug: "notion",
         description: "Database-driven systems designed for startup operations teams.",
-        extendedDescription: "Database-driven systems designed for startup operations teams. Covers customer lifecycle management, task automation, and reporting dashboards. Available as open templates.",
-        badge: "Templates",
+        extendedDescription: "How centralizing operations in Notion enables rapid iteration. Covers customer lifecycle, automations, dashboards, and team workflows.",
+        badge: "Systems",
         url: "/notion",
         featured: true,
         published_at: new Date().toISOString(),
     },
+];
+
+// Grouped projects for display on homepage
+export const projectsByCategory: { category: ProjectCategory; label: string; projects: Project[] }[] = [
     {
-        id: "4",
-        title: "Voice in the Noise",
-        slug: "voice",
-        description: "Essays exploring the intersection of customer success, AI, and product thinking.",
-        extendedDescription: "Essays exploring the intersection of customer success, AI, and product thinking. Published bi-weekly; insights from building at scale and leading teams.",
-        badge: "Essays",
-        url: "https://voiceinthenoise.com",
-        featured: true,
-        published_at: new Date().toISOString(),
+        category: "ai-driven",
+        label: "AI-Driven Experiences",
+        projects: projects.filter(p => p.slug === "experiments"),
+    },
+    {
+        category: "operations",
+        label: "Operations & Systems",
+        projects: projects.filter(p => p.slug === "notion"),
     },
 ];
 

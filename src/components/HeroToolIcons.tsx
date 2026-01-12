@@ -15,15 +15,15 @@ interface Position {
 }
 
 const heroTools: HeroTool[] = [
-    { name: "Antigravity", image: "/tools/antigravity.png", usage: "AI-powered coding assistant for complex development tasks" },
-    { name: "Notion", image: "/tools/notion.png", usage: "Project management, documentation, and knowledge base" },
-    { name: "Perplexity", image: "/tools/perplexity.png", usage: "Research and quick answers with citations" },
-    { name: "Supabase", image: "/tools/supabase.png", usage: "Backend-as-a-service for databases and auth" },
-    { name: "Vercel", image: "/tools/vercel.png", usage: "Deployment and hosting for web projects" },
-    { name: "GitHub", image: "/tools/github.png", usage: "Version control and collaboration" },
-    { name: "Figma", image: "/tools/figma.png", usage: "UI/UX design and prototyping" },
-    { name: "Cursor", image: "/tools/cursor.png", usage: "AI-first code editor for rapid development" },
-    { name: "Claude", image: "/tools/claude.png", usage: "Strategic thinking, writing, and code review partner" },
+    { name: "Figma", image: "/tools/figma.png", usage: "Design systems and wireframes" },
+    { name: "Perplexity", image: "/tools/perplexity.png", usage: "Deep research and pattern discovery" },
+    { name: "Claude", image: "/tools/claude.png", usage: "AI-assisted rapid coding" },
+    { name: "Cursor", image: "/tools/cursor.png", usage: "Code editor with AI integration" },
+    { name: "Antigravity", image: "/tools/antigravity.png", usage: "Vibe coding and rapid iteration" },
+    { name: "Notion", image: "/tools/notion.png", usage: "Connect and sync systems" },
+    { name: "Vercel", image: "/tools/vercel.png", usage: "Full-stack deployment" },
+    { name: "GitHub", image: "/tools/github.png", usage: "Version control and CI/CD" },
+    { name: "Supabase", image: "/tools/supabase.png", usage: "Backend, database, and storage" },
 ];
 
 // Desktop: tighter cluster on the RIGHT side of the page
