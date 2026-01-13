@@ -91,7 +91,7 @@ export default function HowThingsGetBuilt({ steps = defaultSteps }: HowThingsGet
                     How things get built here
                 </h2>
                 <p className="text-[#666666] text-base md:text-lg leading-relaxed mb-12 max-w-3xl">
-                    Most of the work on Himo follows the same loop: understand the real friction, design a system that fits how people actually work, build in small, safe steps, then keep the parts that prove themselves. Whether it's a personal build, a SaaS feature, an internal tool, or a Notion workspace.
+                    Most of the work on Himo follows the same loop: understand the real friction, design a system that fits how people actually work, build in small, safe steps, then keep the parts that prove themselves. Whether it&apos;s a personal build, a SaaS feature, an internal tool, or a Notion workspace.
                 </p>
 
                 {/* Cards Grid */}
