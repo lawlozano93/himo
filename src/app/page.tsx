@@ -6,6 +6,7 @@ import FloatingIcons from "@/components/FloatingIcons";
 import HeroToolIcons from "@/components/HeroToolIcons";
 import MobileToolsFloating from "@/components/MobileToolsFloating";
 import ThinkingSection from "@/components/ThinkingSection";
+import HowThingsGetBuilt from "@/components/HowThingsGetBuilt";
 import Footer from "@/components/Footer";
 import Link from "next/link";
 
@@ -77,6 +78,9 @@ export default function Home() {
         {/* Hero Tool Icons - draggable tools showcase */}
         <HeroToolIcons />
       </section>
+
+      {/* How Things Get Built Section */}
+      <HowThingsGetBuilt />
 
       {/* Projects Section with WobbleCards */}
       <section id="projects" className="py-24 px-6">
