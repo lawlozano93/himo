@@ -103,7 +103,7 @@ export default function HowThingsGetBuilt({ steps = defaultSteps }: HowThingsGet
                             <div
                                 key={step.label}
                                 ref={(el) => { cardRefs.current[index] = el; }}
-                                className={`rounded-2xl p-5 h-full flex flex-col relative min-h-[220px] transition-all duration-300 group ${isHighlighted
+                                className={`rounded-2xl p-4 h-full flex flex-col relative transition-all duration-300 group ${isHighlighted
                                     ? "bg-[#ecf95a] scale-[1.02]"
                                     : "bg-[#f4f4f4] hover:bg-[#ecf95a]"
                                     }`}
