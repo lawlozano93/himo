@@ -86,25 +86,39 @@ export default function HeroToolIcons() {
         setDragging(index);
     };
 
-    const handleMouseMove = (e: React.MouseEvent) => {
+    // Use document-level event listeners during drag to prevent premature release
+    useEffect(() => {
         if (dragging === null || !containerRef.current || isMobile) return;
 
-        const rect = containerRef.current.getBoundingClientRect();
-        const x = ((e.clientX - rect.left) / rect.width) * 100;
-        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        const handleMouseMove = (e: MouseEvent) => {
+            if (!containerRef.current) return;
 
-        setPositions(prev => ({
-            ...prev,
-            [dragging]: {
-                x: Math.max(5, Math.min(95, x)),
-                y: Math.max(5, Math.min(95, y))
-            }
-        }));
-    };
+            const rect = containerRef.current.getBoundingClientRect();
+            const x = ((e.clientX - rect.left) / rect.width) * 100;
+            const y = ((e.clientY - rect.top) / rect.height) * 100;
 
-    const handleEnd = () => {
-        setDragging(null);
-    };
+            setPositions(prev => ({
+                ...prev,
+                [dragging]: {
+                    x: Math.max(5, Math.min(95, x)),
+                    y: Math.max(5, Math.min(95, y))
+                }
+            }));
+        };
+
+        const handleMouseUp = () => {
+            setDragging(null);
+        };
+
+        // Add document-level listeners for reliable drag tracking
+        document.addEventListener('mousemove', handleMouseMove);
+        document.addEventListener('mouseup', handleMouseUp);
+
+        return () => {
+            document.removeEventListener('mousemove', handleMouseMove);
+            document.removeEventListener('mouseup', handleMouseUp);
+        };
+    }, [dragging, isMobile]);
 
     const handleInteraction = (index: number) => {
         // Toggle tooltip on click (for both mobile tap and desktop click)
@@ -123,9 +137,6 @@ export default function HeroToolIcons() {
         <div
             ref={containerRef}
             className="hidden md:block absolute inset-0 pointer-events-none overflow-hidden select-none"
-            onMouseMove={handleMouseMove}
-            onMouseUp={handleEnd}
-            onMouseLeave={handleEnd}
         >
             {heroTools.map((tool, index) => {
                 const pos = positions[index] || posArray[index];

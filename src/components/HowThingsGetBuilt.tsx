@@ -15,23 +15,23 @@ interface HowThingsGetBuiltProps {
 const defaultSteps: ProcessStep[] = [
     {
         label: "Step 1",
-        title: "Start with the real friction",
-        body: "Work begins by understanding where it actually hurts: dropped handoffs, messy spreadsheets, confusing flows, or missing signals in the data. The first pass is always mapping what's really happening, not what people wish was happening.",
+        title: "Find the friction",
+        body: "Map what's breaking: dropped tasks, messy data, confusing flows.",
     },
     {
         label: "Step 2",
-        title: "Design how it should work",
-        body: "Once the friction is clear, the next step is to sketch a system people can live with every day. This means mapping journeys, sketching flows and interfaces, and choosing tools and data structures that fit existing habits.",
+        title: "Design the system",
+        body: "Sketch flows that fit how people work, and choose tools that connect naturally.",
     },
     {
         label: "Step 3",
-        title: "Build in small, reversible steps",
-        body: "Changes ship in tight loops: break work into small pieces, use AI where it helps, and get a working version into a real environment quickly so feedback comes from actual use, not just demos.",
+        title: "Ship in loops",
+        body: "Build small, test with real users, and iterate fast.",
     },
     {
         label: "Step 4",
-        title: "Document and reuse the patterns",
-        body: "Every build is also an excuse to learn. Decisions, patterns, and failures are written down (usually in Notion) so future apps, Notion systems, and internal tools start from a clearer place instead of from scratch.",
+        title: "Document the patterns",
+        body: "Write down what worked so the next build starts smarter.",
     },
 ];
 
@@ -88,10 +88,10 @@ export default function HowThingsGetBuilt({ steps = defaultSteps }: HowThingsGet
             <div className="max-w-6xl mx-auto">
                 {/* Section Header */}
                 <h2 className="text-3xl md:text-4xl font-bold text-[#191314] mb-4">
-                    How things get built here
+                    How Himo works
                 </h2>
                 <p className="text-[#666666] text-base md:text-lg leading-relaxed mb-12 max-w-3xl">
-                    Most of the work on Himo follows the same loop: understand the real friction, design a system that fits how people actually work, build in small, safe steps, then keep the parts that prove themselves. Whether it&apos;s a personal build, a SaaS feature, an internal tool, or a Notion workspace.
+                    Build from real problems, not assumptions. Design systems people actually use. Ship small, learn fast, and document what works.
                 </p>
 
                 {/* Cards Grid */}

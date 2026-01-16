@@ -5,7 +5,7 @@ import { FlipWords } from "@/components/ui/flip-words";
 import FloatingIcons from "@/components/FloatingIcons";
 import HeroToolIcons from "@/components/HeroToolIcons";
 import MobileToolsFloating from "@/components/MobileToolsFloating";
-import ThinkingSection from "@/components/ThinkingSection";
+
 import HowThingsGetBuilt from "@/components/HowThingsGetBuilt";
 import Footer from "@/components/Footer";
 import Link from "next/link";
@@ -129,8 +129,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Thinking & Essays Section */}
-      <ThinkingSection />
+
 
       {/* Contact */}
       <section className="py-24 px-6 bg-[#ecf95a]">
