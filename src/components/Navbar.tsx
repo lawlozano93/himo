@@ -2,24 +2,41 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { useTheme } from "@/context/ThemeContext";
 
 export default function Navbar() {
+    const { backgroundColor } = useTheme();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
+
+    // Determine if background is dark
+    const isDark = backgroundColor === "#191314";
+
+    // Text colors based on background
+    const textColor = isDark ? "text-white" : "text-[#191314]";
+    const navLinkColor = isDark ? "text-[#e5e5e5] hover:text-white" : "text-[#666666] hover:text-[#191314]";
+    const buttonBg = isDark ? "bg-white" : "bg-[#191314]";
+    const buttonText = isDark ? "text-[#191314] hover:bg-[#ecf95a]" : "text-white hover:bg-[#ecf95a] hover:text-[#191314]";
 
     useEffect(() => {
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 50);
         };
+        handleScroll();
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
+    // If menu is open, force dark text for visibility on white menu background
+    const logoColor = isMenuOpen ? "text-[#191314]" : textColor;
+    const menuButtonColor = isMenuOpen ? "text-[#191314]" : (isDark ? "text-white" : "text-[#666666]");
+    const navBorderColor = isScrolled ? (isDark ? "border-white/10" : "border-[#191314]/10") : "border-transparent";
+
     return (
         <nav
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-                    ? "bg-white/90 backdrop-blur-sm border-b border-[#e5e5e5]"
-                    : "bg-transparent"
+                ? `backdrop-blur-sm border-b ${navBorderColor}`
+                : "bg-transparent border-transparent"
                 }`}
         >
             <div className="max-w-6xl mx-auto px-6 py-5">
@@ -27,7 +44,7 @@ export default function Navbar() {
                     {/* Logo */}
                     <Link
                         href="/"
-                        className="text-xl font-bold text-[#191314] hover:text-[#666666] transition-colors"
+                        className={`text-xl font-bold transition-colors ${logoColor}`}
                     >
                         himo
                     </Link>
@@ -36,28 +53,22 @@ export default function Navbar() {
                     <div className="hidden md:flex items-center gap-8">
                         <a
                             href="#projects"
-                            className="text-[#666666] hover:text-[#191314] transition-colors font-medium"
+                            className={`transition-colors font-medium ${navLinkColor}`}
                         >
-                            Projects
+                            Learning Focus
                         </a>
                         <Link
                             href="/experience"
-                            className="text-[#666666] hover:text-[#191314] transition-colors font-medium"
+                            className={`transition-colors font-medium ${navLinkColor}`}
                         >
                             Experience
                         </Link>
-                        <a
-                            href="mailto:lawlozano93@gmail.com"
-                            className="px-4 py-2 rounded-lg bg-[#191314] text-white hover:bg-[#ecf95a] hover:text-[#191314] transition-colors font-semibold text-sm"
-                        >
-                            Contact
-                        </a>
                     </div>
 
                     {/* Mobile Menu Button */}
                     <button
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
-                        className="md:hidden p-2 text-[#666666] hover:text-[#191314] transition-colors"
+                        className={`md:hidden p-2 transition-colors ${menuButtonColor}`}
                         aria-label="Toggle menu"
                     >
                         <svg
@@ -94,7 +105,7 @@ export default function Navbar() {
                                 onClick={() => setIsMenuOpen(false)}
                                 className="text-[#666666] hover:text-[#191314] transition-colors font-medium py-2"
                             >
-                                Projects
+                                Learning Focus
                             </a>
                             <Link
                                 href="/experience"
@@ -103,12 +114,6 @@ export default function Navbar() {
                             >
                                 Experience
                             </Link>
-                            <a
-                                href="mailto:lawlozano93@gmail.com"
-                                className="px-4 py-3 rounded-lg bg-[#191314] text-white text-center hover:bg-[#ecf95a] hover:text-[#191314] transition-colors font-semibold mt-2"
-                            >
-                                Contact
-                            </a>
                         </div>
                     </div>
                 )}

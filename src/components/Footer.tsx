@@ -36,7 +36,7 @@ export default function Footer() {
 
                 {/* Meta Info */}
                 <div className="flex flex-wrap items-center justify-between gap-4 text-xs text-[#666666]">
-                    <span>Built in Cebu 🇵🇭 with AI, Cursor, and Vercel</span>
+                    <span>Vibe-coded with Antigravity and Cursor, shipped on Vercel.</span>
                     <span>© 2026 Himo</span>
                 </div>
             </div>

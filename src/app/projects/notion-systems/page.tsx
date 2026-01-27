@@ -3,97 +3,97 @@ import SubtlePattern from "@/components/SubtlePattern";
 import Footer from "@/components/Footer";
 
 export const metadata = {
-    title: "Notion Systems | Centralizing Operations | Himo",
-    description: "How centralizing operations in Notion enables rapid iteration. Database-driven systems for customer lifecycle, automation, dashboards.",
+    title: "Notion Systems | Himo",
+    description: "Building unified workspaces in Notion. From fragmented tools to single source of truth, for work and life.",
 };
 
-// The problem scenarios
-const problemScenarios = [
-    "Customer data in Google Sheets",
-    "Decisions in Slack",
-    "Documentation in Google Drive",
-    "Tasks in Jira",
-    "Timeline in Calendar",
-    "Multiple dashboards that don't talk to each other",
+// The fragmentation problem (real example)
+const fragmentedTools = [
+    { tool: "Linear", purpose: "Project management" },
+    { tool: "Google Docs/Sheets", purpose: "Project artifacts" },
+    { tool: "Outline", purpose: "Wiki & documentation" },
+    { tool: "Slack", purpose: "Internal notes & decisions" },
 ];
 
-// What happens
-const whatHappens = [
-    "Context is fragmented",
-    "Decisions are slow (hunting for context)",
-    "Onboarding new team members takes 2 weeks",
-    "Mistakes happen (conflicting info in different places)",
-    "Scaling breaks (system collapses under complexity)",
+// What happens with fragmentation
+const fragmentationProblems = [
+    "Context scattered across 4+ tabs",
+    "Decisions lost in chat history",
+    "Onboarding takes 2+ weeks",
+    "\"Where's that doc?\" every day",
+    "System collapses as team scales",
 ];
 
-// Research findings
-const researchFindings = [
+// The approach
+const approach = [
     {
-        question: "What do high-performing teams have in common?",
-        answer: "Single source of truth. Clear information architecture.",
+        step: "1",
+        title: "Identify the Friction",
+        description: "What's actually slowing things down? Where does info get lost?",
     },
     {
-        question: "How do they stay coordinated?",
-        answer: "Decisions documented where they happen. No recreating context.",
+        step: "2",
+        title: "Design the Architecture",
+        description: "Map out databases, relationships, and views that fit the workflow",
     },
     {
-        question: "What's the cost of fragmentation?",
-        answer: "~$10k per employee per year in lost productivity. For a 5-person team: $50k/year in waste.",
-    },
-];
-
-// System layers
-const systemLayers = [
-    {
-        title: "DATA LAYER",
-        items: ["Customer database (single source of truth)", "Team database (who owns what)", "Projects/Tasks database", "Operations Log"],
+        step: "3",
+        title: "Build Incrementally",
+        description: "Start with core system, add complexity only when needed",
     },
     {
-        title: "RELATIONSHIP LAYER",
-        items: ["Customer → has many → Projects", "Customer → has many → Communication Logs", "Team Member → owns → Customers", "Project → relates to → Team Members"],
-    },
-    {
-        title: "AUTOMATION LAYER",
-        items: ["New customer → Trigger welcome sequence", "Milestone reached → Send notification", "Task completed → Update customer record", "Weekly: Generate status report"],
-    },
-    {
-        title: "VISIBILITY LAYER",
-        items: ["Customer health overview", "Team workload & capacity", "Project status & blockers", "Operations metrics"],
+        step: "4",
+        title: "Iterate Based on Use",
+        description: "Real usage reveals what works. Adjust. Repeat.",
     },
 ];
 
-// Systems built
-const systemsBuilt = [
+// Use cases (work + personal)
+const useCases = [
     {
-        title: "Customer Lifecycle Management",
-        description: "End-to-end tracking from lead to renewal",
-        items: ["Lead and prospect databases", "Onboarding progress tracking", "Health score calculations", "Renewal and expansion pipelines"],
+        category: "For Work",
+        examples: [
+            "Customer lifecycle tracking",
+            "Project & task management",
+            "Team wikis & knowledge bases",
+            "Meeting notes & decisions log",
+            "Automations with Zapier/Make",
+        ],
     },
     {
-        title: "Automations & Integrations",
-        description: "Connecting Notion to external tools",
-        items: ["Zapier and Make integrations", "Automated status updates", "Slack notifications", "Calendar syncing"],
-    },
-    {
-        title: "Dashboards & Reporting",
-        description: "Visual overviews for decision-making",
-        items: ["Team performance metrics", "Customer health dashboards", "Project progress views", "Weekly/monthly reviews"],
-    },
-    {
-        title: "Team Workflows",
-        description: "Standardized processes for consistency",
-        items: ["Meeting notes templates", "Decision documentation", "Process playbooks", "Knowledge bases"],
+        category: "For Personal",
+        examples: [
+            "Goal tracking & reviews",
+            "Personal knowledge management",
+            "Habit & routine systems",
+            "Finance & budget tracking",
+            "Content creation workflows",
+        ],
     },
 ];
 
-// What this enables
-const enables = [
-    "Single source of truth for all operations data",
-    "Rapid onboarding of new team members",
-    "Consistent processes across the organization",
-    "Data-driven decision making",
-    "Reduced manual work through automation",
-    "Scalable systems that grow with the team",
+// Coming soon templates
+const comingSoonTemplates = [
+    {
+        title: "Customer Success Hub",
+        description: "End-to-end customer lifecycle from lead to renewal",
+        status: "Coming Soon",
+    },
+    {
+        title: "Startup Ops Kit",
+        description: "Everything a small team needs: tasks, docs, decisions, metrics",
+        status: "Coming Soon",
+    },
+    {
+        title: "Personal Dashboard",
+        description: "Goals, habits, finances, and knowledge in one place",
+        status: "Coming Soon",
+    },
+    {
+        title: "Content System",
+        description: "Idea capture → drafts → published → analytics",
+        status: "Coming Soon",
+    },
 ];
 
 export default function NotionSystemsPage() {
@@ -103,7 +103,7 @@ export default function NotionSystemsPage() {
             <section className="pt-32 pb-12 px-6 relative">
                 <SubtlePattern variant="dots" />
                 <div className="max-w-4xl mx-auto relative z-10">
-                    {/* Back link and badge on same line */}
+                    {/* Back link */}
                     <div className="flex items-center gap-4 mb-8">
                         <Link
                             href="/"
@@ -114,122 +114,107 @@ export default function NotionSystemsPage() {
                             </svg>
                             <span>Back to Home</span>
                         </Link>
-                        <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#191314] text-white">
-                            Systems
-                        </span>
                     </div>
 
                     <h1 className="text-4xl md:text-5xl font-bold text-[#191314] mb-4">
                         Notion Systems
                     </h1>
                     <p className="text-xl text-[#666666] mb-6">
-                        How centralizing operations enables rapid iteration
+                        From fragmented tools to unified workspace
                     </p>
 
-                    {/* One-liner */}
-                    <div className="bg-[#ecf95a] rounded-xl p-6">
-                        <p className="text-[#191314] font-medium">
-                            Most teams use 5+ tools. Information is scattered. Notion + clear architecture = single source of truth. Everything connected. Everything documented. Everything accessible.
+                    {/* Personal story hook */}
+                    <div className="bg-[#f4f4f4] rounded-xl p-6">
+                        <p className="text-[#666666]">
+                            After working at multiple companies, each with their own mix of tools (project management here, docs there, notes in chat), I learned one thing: <strong className="text-[#191314]">the friction from disconnected tools costs more than the tools themselves.</strong>
                         </p>
                     </div>
                 </div>
             </section>
 
-            {/* The Problem */}
-            <section className="py-16 px-6 bg-[#f4f4f4]">
+            {/* The Problem - Real Example */}
+            <section className="py-16 px-6 bg-[#191314]">
                 <div className="max-w-4xl mx-auto">
-                    <h2 className="text-2xl font-bold text-[#191314] mb-4">The Problem</h2>
-                    <p className="text-[#666666] mb-6">Picture this team:</p>
+                    <h2 className="text-2xl font-bold text-white mb-4">The Fragmentation Problem</h2>
+                    <p className="text-neutral-400 mb-6">
+                        A pattern I saw at every company:
+                    </p>
 
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-8">
-                        {problemScenarios.map((item, i) => (
-                            <div key={i} className="bg-white rounded-xl p-4 text-sm text-[#191314]">
-                                {item}
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
+                        {fragmentedTools.map((item, i) => (
+                            <div key={i} className="bg-[#2a2a2a] rounded-xl p-4">
+                                <p className="text-white font-medium text-sm">{item.tool}</p>
+                                <p className="text-neutral-500 text-xs">{item.purpose}</p>
                             </div>
                         ))}
                     </div>
 
-                    <p className="text-[#666666] mb-4">What happens:</p>
-                    <div className="space-y-2">
-                        {whatHappens.map((item, i) => (
-                            <div key={i} className="flex items-start gap-2 text-[#666666]">
-                                <span className="text-red-500">→</span>
+                    <p className="text-neutral-400 mb-4">What happens:</p>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        {fragmentationProblems.map((item, i) => (
+                            <div key={i} className="flex items-start gap-2 text-neutral-400 text-sm">
+                                <span className="text-red-400">→</span>
                                 <span>{item}</span>
                             </div>
                         ))}
                     </div>
-
-                    <div className="mt-8 p-5 bg-[#191314] rounded-xl">
-                        <p className="text-[#ecf95a] font-bold mb-2">Real Question:</p>
-                        <p className="text-neutral-300">
-                            What if everything lived in one place, connected by clear architecture?
-                        </p>
-                    </div>
                 </div>
             </section>
 
-            {/* Research Phase */}
+            {/* The Solution */}
             <section className="py-16 px-6">
                 <div className="max-w-4xl mx-auto">
-                    <h2 className="text-2xl font-bold text-[#191314] mb-6">The Research Phase</h2>
+                    <h2 className="text-2xl font-bold text-[#191314] mb-4">The Solution</h2>
+                    <p className="text-[#666666] mb-8">
+                        Notion isn&apos;t just a note-taking app. With the right architecture, it becomes a <strong>unified operating system</strong> for startups, teams, or personal life. Everything connected. Everything searchable. Everything in one place.
+                    </p>
 
-                    <div className="space-y-4 mb-8">
-                        {researchFindings.map((item, i) => (
-                            <div key={i} className="bg-[#f4f4f4] rounded-xl p-5">
-                                <p className="font-medium text-[#191314] mb-2">Q: {item.question}</p>
-                                <p className="text-sm text-[#666666]">A: {item.answer}</p>
-                            </div>
-                        ))}
-                    </div>
-
-                    <div className="p-5 bg-[#ecf95a] rounded-xl">
-                        <p className="font-bold text-[#191314] mb-1">Key Finding:</p>
+                    <div className="bg-[#ecf95a] rounded-xl p-6">
                         <p className="text-[#191314]">
-                            Operations friction = design problem, not tool problem. You can have the best tools and still be fragmented. Or you can have simple tools connected by clear architecture.
+                            <strong>The key:</strong> It&apos;s not about Notion itself. It&apos;s about figuring out the actual problem, then building a system that fits. The tool follows the design.
                         </p>
                     </div>
                 </div>
             </section>
 
-            {/* System Design */}
+            {/* The Approach */}
             <section className="py-16 px-6 bg-[#f4f4f4]">
                 <div className="max-w-4xl mx-auto">
-                    <h2 className="text-2xl font-bold text-[#191314] mb-6">The System Design Phase</h2>
-                    <p className="text-[#666666] mb-8">What a Centralized System Looks Like:</p>
+                    <h2 className="text-2xl font-bold text-[#191314] mb-8">The Approach</h2>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        {systemLayers.map((layer, i) => (
-                            <div key={i} className="bg-white rounded-xl p-5">
-                                <div className="flex items-center gap-2 mb-3">
-                                    <span className="w-6 h-6 rounded-full bg-[#191314] text-white flex items-center justify-center text-xs font-bold">{i + 1}</span>
-                                    <h3 className="font-bold text-[#191314] text-sm">{layer.title}</h3>
+                        {approach.map((item) => (
+                            <div key={item.step} className="bg-white rounded-xl p-5">
+                                <div className="flex items-center gap-3 mb-2">
+                                    <span className="w-8 h-8 rounded-full bg-[#191314] text-white flex items-center justify-center text-sm font-bold">
+                                        {item.step}
+                                    </span>
+                                    <h3 className="font-bold text-[#191314]">{item.title}</h3>
                                 </div>
-                                <ul className="space-y-1 ml-8">
-                                    {layer.items.map((item, j) => (
-                                        <li key={j} className="text-sm text-[#666666]">• {item}</li>
-                                    ))}
-                                </ul>
+                                <p className="text-sm text-[#666666] ml-11">{item.description}</p>
                             </div>
                         ))}
                     </div>
                 </div>
             </section>
 
-            {/* Systems Built */}
+            {/* Use Cases - Work + Personal */}
             <section className="py-16 px-6">
                 <div className="max-w-4xl mx-auto">
-                    <h2 className="text-2xl font-bold text-[#191314] mb-8">Systems Built</h2>
+                    <h2 className="text-2xl font-bold text-[#191314] mb-4">Not Just for Work</h2>
+                    <p className="text-[#666666] mb-8">
+                        The same system-building approach works for personal life. Track what matters, reduce friction, build habits.
+                    </p>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        {systemsBuilt.map((system, i) => (
-                            <div key={i} className="bg-[#f4f4f4] rounded-xl p-6 hover:bg-[#fafafa] transition-colors">
-                                <h3 className="font-bold text-[#191314] mb-1">{system.title}</h3>
-                                <p className="text-sm text-[#666666] mb-4">{system.description}</p>
+                        {useCases.map((useCase, i) => (
+                            <div key={i} className="bg-[#f4f4f4] rounded-xl p-6">
+                                <h3 className="font-bold text-[#191314] mb-4">{useCase.category}</h3>
                                 <ul className="space-y-2">
-                                    {system.items.map((item, j) => (
+                                    {useCase.examples.map((example, j) => (
                                         <li key={j} className="text-sm text-[#666666] flex items-start gap-2">
-                                            <span className="text-[#191314]">•</span>
-                                            <span>{item}</span>
+                                            <span className="text-[#191314] font-bold">•</span>
+                                            <span>{example}</span>
                                         </li>
                                     ))}
                                 </ul>
@@ -239,16 +224,27 @@ export default function NotionSystemsPage() {
                 </div>
             </section>
 
-            {/* What This Enables */}
+            {/* Coming Soon Templates */}
             <section className="py-16 px-6 bg-[#191314]">
                 <div className="max-w-4xl mx-auto">
-                    <h2 className="text-2xl font-bold text-white mb-8">What This Enables</h2>
+                    <div className="flex items-center gap-2 mb-4">
+                        <span className="px-3 py-1 rounded-full bg-[#ecf95a] text-[#191314] text-xs font-bold">TEMPLATES</span>
+                    </div>
+                    <h2 className="text-2xl font-bold text-white mb-4">Coming Soon</h2>
+                    <p className="text-neutral-400 mb-8">
+                        Pre-built Notion systems you can duplicate and customize. Each one designed to solve a real problem.
+                    </p>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        {enables.map((item, i) => (
-                            <div key={i} className="flex items-start gap-3">
-                                <span className="text-[#ecf95a]">✓</span>
-                                <p className="text-neutral-300">{item}</p>
+                        {comingSoonTemplates.map((template, i) => (
+                            <div key={i} className="bg-[#2a2a2a] rounded-xl p-5 border border-[#3a3a3a]">
+                                <div className="flex items-center justify-between mb-2">
+                                    <h3 className="font-bold text-white">{template.title}</h3>
+                                    <span className="text-xs text-neutral-500 bg-[#1a1a1a] px-2 py-1 rounded-full">
+                                        {template.status}
+                                    </span>
+                                </div>
+                                <p className="text-sm text-neutral-400">{template.description}</p>
                             </div>
                         ))}
                     </div>
@@ -259,10 +255,10 @@ export default function NotionSystemsPage() {
             <section className="py-16 px-6 bg-[#f4f4f4]">
                 <div className="max-w-4xl mx-auto text-center">
                     <h2 className="text-2xl font-bold text-[#191314] mb-4">
-                        Want to see more?
+                        Need a Custom System?
                     </h2>
                     <p className="text-[#666666] mb-6">
-                        These systems were built for real teams solving real problems. Get in touch to learn more.
+                        Every team and every person has unique needs. Let&apos;s figure out what system fits yours.
                     </p>
                     <a
                         href="mailto:lawlozano93@gmail.com"

@@ -7,133 +7,136 @@ export const metadata = {
     description: "A lightweight web app for tracking paluwagan – Filipino-style rotating savings groups. Built with Claude Opus + Antigravity in a vibe coding workflow.",
 };
 
-// Core Features
-const coreFeatures = [
+// Key Features
+const features = [
     {
-        title: "Group Creation",
-        description: "Create groups with custom contribution amounts, frequency (weekly/biweekly/monthly), and total slots",
+        icon: "👥",
+        title: "Create Your Group",
+        description: "Set contribution amount, frequency (weekly/biweekly/monthly), and total payout slots",
     },
     {
-        title: "Member Invitations",
-        description: "Shareable invite links for easy member onboarding via /join/:token",
+        icon: "🔗",
+        title: "Invite via Link",
+        description: "Share a unique invite link. Members join instantly, no app download needed",
     },
     {
-        title: "Payout Scheduling",
-        description: "Drag-and-drop ordering with randomize option and locked completed positions",
+        icon: "🎲",
+        title: "Schedule Payouts",
+        description: "Drag-and-drop to order who gets paid first, or randomize for fairness",
     },
     {
-        title: "Contribution Tracking",
-        description: "Real-time payment status with receipt uploads for verification",
-    },
-];
-
-// Tech Stack
-const techStack = {
-    frontend: [
-        { name: "Next.js 16", purpose: "App Router with RSC" },
-        { name: "React 19", purpose: "UI library" },
-        { name: "TypeScript", purpose: "Type safety" },
-        { name: "Tailwind CSS 4", purpose: "Styling" },
-        { name: "shadcn/ui", purpose: "Component library" },
-        { name: "dnd-kit", purpose: "Drag-and-drop" },
-    ],
-    backend: [
-        { name: "Supabase", purpose: "PostgreSQL, Auth, RLS, Storage" },
-        { name: "Server Actions", purpose: "Next.js server functions" },
-    ],
-};
-
-// Design Decisions
-const designDecisions = [
-    {
-        decision: "Tracker, not a bank",
-        reason: "Paluwagan already works on social trust. No payment processing, KYC, or automated collections needed.",
+        icon: "📸",
+        title: "Upload Receipts",
+        description: "Submit proof of payment. The receiver verifies, and the cycle advances",
     },
     {
-        decision: "Trust-based by design",
-        reason: "No financial licenses or compliance complexity. The app digitizes tracking, not transactions.",
-    },
-    {
-        decision: "Ship fast, iterate faster",
-        reason: "Lower technical complexity means more time spent on what matters to users.",
+        icon: "🔔",
+        title: "Payment Reminders",
+        description: "Automated emails remind members when contributions are due",
     },
 ];
 
-// Core Flows
-const coreFlows = [
+// Build Steps (The Journey)
+const buildSteps = [
     {
-        step: "1",
-        title: "Create Group",
-        description: "Admin sets name, contribution amount, frequency, and total slots",
+        step: "01",
+        title: "Internal PRD",
+        subtitle: "Defining the problem",
+        description: "Started with a rough product doc: What's the problem? Who's the user? What's MVP scope?",
+        details: [
+            "Trust-based tracker, not fintech",
+            "No payment processing or KYC",
+            "Simple enough to ship in weeks",
+        ],
     },
     {
-        step: "2",
-        title: "Invite Members",
-        description: "Share invite link → member opens → joins if slots available",
+        step: "02",
+        title: "Planning in Antigravity",
+        subtitle: "Claude Opus as co-pilot",
+        description: "Before writing code, used Claude to create a full implementation plan.",
+        details: [
+            "Broke down: auth flow, database schema, UI components",
+            "Prioritized: what to build first",
+            "Identified edge cases early",
+        ],
     },
     {
-        step: "3",
-        title: "Set Rotation Order",
-        description: "Drag-and-drop to set payout positions, or randomize for fairness",
+        step: "03",
+        title: "UI First with shadcn",
+        subtitle: "Interface before backend",
+        description: "Built the entire interface with mock data before touching the database.",
+        details: [
+            "Next.js 16 + Tailwind CSS 4",
+            "shadcn/ui for components",
+            "dnd-kit for drag-drop scheduling",
+        ],
     },
     {
-        step: "4",
-        title: "Track Contributions",
-        description: "Members upload receipts → receiver verifies → cycle auto-advances",
-    },
-];
-
-// Vibe Coding Highlights
-const vibeCodingHighlights = [
-    {
-        strength: "Scaffolding",
-        example: "Generated 7-table schema with RLS policies in one prompt",
+        step: "04",
+        title: "Backend with Next.js + Supabase",
+        subtitle: "Wiring up the data layer",
+        description: "Server Actions handle business logic. Supabase stores data and handles auth.",
+        details: [
+            "Server Actions for all mutations",
+            "Supabase PostgreSQL (7 tables)",
+            "Row-Level Security for access control",
+        ],
     },
     {
-        strength: "Boilerplate",
-        example: "Server actions, form handlers, validation patterns",
-    },
-    {
-        strength: "Component Patterns",
-        example: "shadcn/ui integration, responsive mobile-first layouts",
-    },
-    {
-        strength: "Refactoring",
-        example: "Extracting shared logic, DRYing code across features",
-    },
-];
-
-// Human Judgment Areas
-const humanJudgment = [
-    {
-        area: "Domain Modeling",
-        why: "Understanding paluwagan nuances like slots, positions, and locks",
-    },
-    {
-        area: "UX Decisions",
-        why: "When to show errors, which flows to simplify for trust-based groups",
-    },
-    {
-        area: "Edge Cases",
-        why: "Partial payments, mid-cycle joins, double-slot support",
-    },
-    {
-        area: "RLS Debugging",
-        why: "Permission issues required deep SQL understanding",
+        step: "05",
+        title: "Email & Automation",
+        subtitle: "Notifications that just work",
+        description: "Added payment reminders with Resend email and Supabase cron jobs.",
+        details: [
+            "Resend for transactional email",
+            "Supabase cron runs daily at 4PM PHT",
+            "Emails sent to members with pending payments",
+        ],
     },
 ];
 
-// Key Learnings
-const keyLearnings = [
-    "Spend 40% on research + architecture (not rushed)",
-    "AI handles ~70% of implementation when architecture is solid",
-    "Deploy small, deploy often to catch issues early",
-    "Maintain human oversight—AI guides, humans decide",
+// Iteration Examples
+const iterations = [
+    {
+        prompt: "Need receipt upload for payment proof",
+        result: "Added PaymentVerificationDialog with image preview",
+    },
+    {
+        prompt: "RLS is blocking status updates",
+        result: "Created admin client bypass pattern",
+    },
+    {
+        prompt: "Mobile nav feels off",
+        result: "Switched to bottom tab bar, feels native",
+    },
+    {
+        prompt: "Cycle should auto-advance when done",
+        result: "Added checkAndAdvanceCycle logic",
+    },
+];
+
+// Tech Stack (with free tier note)
+const techStackItems = [
+    { name: "Next.js 16", role: "App framework", free: true },
+    { name: "Supabase", role: "Database + Auth + Storage", free: true },
+    { name: "Vercel", role: "Hosting", free: true },
+    { name: "Resend", role: "Transactional email", free: true },
+    { name: "Antigravity", role: "AI coding assistant", free: false, note: "Base plan" },
+];
+
+// Key Takeaways
+const takeaways = [
+    "AI handles boilerplate, humans handle domain nuance",
+    "Start with architecture before code. Saves refactor time",
+    "UI first with mock data = faster iteration",
+    "Deploy often, fix fast, ship incrementally",
 ];
 
 export default function BubuPage() {
     return (
         <>
+            {/* ==================== PART 1: THE PRODUCT ==================== */}
+
             {/* Header Section */}
             <section className="pt-32 pb-12 px-6 relative">
                 <SubtlePattern variant="shapes" />
@@ -157,7 +160,7 @@ export default function BubuPage() {
                     {/* One-liner */}
                     <div className="bg-[#ecf95a] rounded-xl p-6 mb-8">
                         <p className="text-[#191314] font-medium">
-                            BUBU digitizes the traditional Filipino <strong>paluwagan</strong>—a rotating savings system where a group pools money and one member receives the pot each round. No complex fintech, just a tracker built on trust.
+                            BUBU digitizes the traditional Filipino <strong>paluwagan</strong>, a rotating savings system where a group pools money and one member receives the pot each round. No complex fintech, just a tracker built on trust.
                         </p>
                     </div>
 
@@ -174,9 +177,6 @@ export default function BubuPage() {
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
                             </svg>
                         </a>
-                        <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#f4f4f4] text-[#666666] font-medium">
-                            Built with Claude Opus + Antigravity
-                        </span>
                     </div>
                 </div>
             </section>
@@ -185,174 +185,35 @@ export default function BubuPage() {
             <section className="py-16 px-6 bg-[#f4f4f4]">
                 <div className="max-w-4xl mx-auto">
                     <h2 className="text-2xl font-bold text-[#191314] mb-4">What is Paluwagan?</h2>
-                    <p className="text-[#666666] mb-8">
-                        Paluwagan is a Filipino rotating savings tradition. A group of people contributes a fixed amount per cycle (weekly, biweekly, or monthly), and one member receives the entire pot each round—until everyone has received their payout. It&apos;s built on trust and personal relationships, typically tracked via paper ledgers or group chats.
+                    <p className="text-[#666666] mb-4">
+                        Paluwagan is a Filipino rotating savings tradition. A group of people contributes a fixed amount per cycle (weekly, biweekly, or monthly), and one member receives the entire pot each round until everyone has received their payout.
                     </p>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        {coreFeatures.map((feature, i) => (
-                            <div key={i} className="bg-white rounded-xl p-5">
-                                <h3 className="font-bold text-[#191314] mb-2">{feature.title}</h3>
-                                <p className="text-sm text-[#666666]">{feature.description}</p>
-                            </div>
-                        ))}
-                    </div>
+                    <p className="text-[#666666]">
+                        It&apos;s built on trust and personal relationships, typically tracked via paper ledgers or group chats. BUBU makes it transparent and organized.
+                    </p>
                 </div>
             </section>
 
-            {/* Design Philosophy */}
+            {/* Key Features */}
             <section className="py-16 px-6">
                 <div className="max-w-4xl mx-auto">
-                    <h2 className="text-2xl font-bold text-[#191314] mb-4">Design Philosophy</h2>
-                    <p className="text-[#666666] mb-8">
-                        We deliberately avoided complex fintech features. BUBU is a tracker, not a bank.
-                    </p>
+                    <h2 className="text-2xl font-bold text-[#191314] mb-8">What You Can Do</h2>
 
-                    <div className="space-y-4">
-                        {designDecisions.map((item, i) => (
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        {features.map((feature, i) => (
                             <div key={i} className="bg-[#f4f4f4] rounded-xl p-5">
-                                <h3 className="font-bold text-[#191314] mb-1">{item.decision}</h3>
-                                <p className="text-sm text-[#666666]">{item.reason}</p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* How It Works */}
-            <section className="py-16 px-6 bg-[#f4f4f4]">
-                <div className="max-w-4xl mx-auto">
-                    <h2 className="text-2xl font-bold text-[#191314] mb-8">How It Works</h2>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        {coreFlows.map((flow) => (
-                            <div key={flow.step} className="bg-white rounded-xl p-5">
                                 <div className="flex items-center gap-3 mb-2">
-                                    <span className="w-8 h-8 rounded-full bg-[#191314] text-white flex items-center justify-center text-sm font-bold">
-                                        {flow.step}
-                                    </span>
-                                    <h3 className="font-bold text-[#191314]">{flow.title}</h3>
+                                    <span className="text-2xl">{feature.icon}</span>
+                                    <h3 className="font-bold text-[#191314]">{feature.title}</h3>
                                 </div>
-                                <p className="text-sm text-[#666666] ml-11">{flow.description}</p>
+                                <p className="text-sm text-[#666666] ml-10">{feature.description}</p>
                             </div>
                         ))}
                     </div>
-
-                    <div className="mt-8 p-5 bg-[#191314] rounded-xl">
-                        <p className="text-[#ecf95a] font-bold mb-2">Auto-Advancing Cycles</p>
-                        <p className="text-neutral-300">
-                            When all payments in a cycle are marked as &quot;paid&quot;, the cycle automatically completes and the next one becomes active. When all cycles finish, the group is marked as completed.
-                        </p>
-                    </div>
                 </div>
             </section>
 
-            {/* Tech Stack */}
-            <section className="py-16 px-6">
-                <div className="max-w-4xl mx-auto">
-                    <h2 className="text-2xl font-bold text-[#191314] mb-8">Tech Stack</h2>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div className="bg-[#f4f4f4] rounded-xl p-6">
-                            <h3 className="font-bold text-[#191314] mb-4">Frontend</h3>
-                            <div className="space-y-3">
-                                {techStack.frontend.map((tech, i) => (
-                                    <div key={i} className="flex justify-between text-sm">
-                                        <span className="font-medium text-[#191314]">{tech.name}</span>
-                                        <span className="text-[#666666]">{tech.purpose}</span>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-
-                        <div className="bg-[#f4f4f4] rounded-xl p-6">
-                            <h3 className="font-bold text-[#191314] mb-4">Backend</h3>
-                            <div className="space-y-3">
-                                {techStack.backend.map((tech, i) => (
-                                    <div key={i} className="flex justify-between text-sm">
-                                        <span className="font-medium text-[#191314]">{tech.name}</span>
-                                        <span className="text-[#666666]">{tech.purpose}</span>
-                                    </div>
-                                ))}
-                            </div>
-
-                            <div className="mt-6 pt-4 border-t border-[#e5e5e5]">
-                                <h4 className="font-medium text-[#191314] mb-2 text-sm">Key Patterns</h4>
-                                <ul className="text-sm text-[#666666] space-y-1">
-                                    <li>• Server Components by default</li>
-                                    <li>• Server Actions over API routes</li>
-                                    <li>• RLS for database authorization</li>
-                                    <li>• URL search params for state</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Vibe Coding */}
-            <section className="py-16 px-6 bg-[#191314]">
-                <div className="max-w-4xl mx-auto">
-                    <h2 className="text-2xl font-bold text-white mb-4">Built with Vibe Coding</h2>
-                    <p className="text-neutral-400 mb-8">
-                        No formal PRD. Rapid conversational coding with Claude Opus inside Antigravity. The iteration loop: prompt → generate → run locally → observe → report issues → refactor → repeat.
-                    </p>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <h3 className="text-[#ecf95a] font-bold mb-4">Where Claude Excelled</h3>
-                            <div className="space-y-3">
-                                {vibeCodingHighlights.map((item, i) => (
-                                    <div key={i} className="bg-[#2a2a2a] rounded-lg p-4">
-                                        <p className="text-white font-medium text-sm">{item.strength}</p>
-                                        <p className="text-neutral-400 text-sm">{item.example}</p>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-
-                        <div>
-                            <h3 className="text-[#ecf95a] font-bold mb-4">Where Human Judgment Was Crucial</h3>
-                            <div className="space-y-3">
-                                {humanJudgment.map((item, i) => (
-                                    <div key={i} className="bg-[#2a2a2a] rounded-lg p-4">
-                                        <p className="text-white font-medium text-sm">{item.area}</p>
-                                        <p className="text-neutral-400 text-sm">{item.why}</p>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Key Learnings */}
-            <section className="py-16 px-6">
-                <div className="max-w-4xl mx-auto">
-                    <h2 className="text-2xl font-bold text-[#191314] mb-4">Key Learnings</h2>
-                    <p className="text-[#666666] mb-8">
-                        Vibe coding with Claude can ship production apps when the domain is well-understood, scope is tightly constrained, and iteration is rapid.
-                    </p>
-
-                    <div className="space-y-3">
-                        {keyLearnings.map((item, i) => (
-                            <div key={i} className="flex items-start gap-3 bg-[#f4f4f4] rounded-xl p-4">
-                                <span className="text-[#191314] font-bold">✓</span>
-                                <p className="text-[#191314]">{item}</p>
-                            </div>
-                        ))}
-                    </div>
-
-                    <div className="mt-8 p-5 bg-[#ecf95a] rounded-xl">
-                        <p className="font-bold text-[#191314] mb-2">The Balance</p>
-                        <p className="text-[#191314]">
-                            AI scaffolding + human domain expertise + tight scope = shipped product. The absence of formal PRDs was offset by continuous micro-decisions during conversation-driven development.
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            {/* Target Users */}
+            {/* Who It's For */}
             <section className="py-16 px-6 bg-[#f4f4f4]">
                 <div className="max-w-4xl mx-auto">
                     <h2 className="text-2xl font-bold text-[#191314] mb-8">Who It&apos;s For</h2>
@@ -377,8 +238,133 @@ export default function BubuPage() {
                 </div>
             </section>
 
-            {/* Back Navigation */}
+            {/* ==================== PART 2: THE BUILD STORY ==================== */}
+
+            {/* Story Header */}
+            <section className="py-16 px-6 bg-[#191314]">
+                <div className="max-w-4xl mx-auto">
+                    <div className="flex items-center gap-2 mb-4">
+                        <span className="px-3 py-1 rounded-full bg-[#ecf95a] text-[#191314] text-xs font-bold">CASE STUDY</span>
+                    </div>
+                    <h2 className="text-2xl font-bold text-white mb-4">How We Built This</h2>
+                    <p className="text-neutral-400 mb-6">
+                        A vibe coding project with Claude Opus + Antigravity. No formal PRD, just rapid iteration from idea to production.
+                    </p>
+
+                    {/* Cost highlight */}
+                    <div className="bg-[#2a2a2a] rounded-xl p-5 inline-block">
+                        <p className="text-[#ecf95a] font-bold text-lg">~$0 Build Cost</p>
+                        <p className="text-neutral-400 text-sm">All free tiers except Antigravity base plan</p>
+                    </div>
+                </div>
+            </section>
+
+            {/* Build Steps */}
             <section className="py-16 px-6">
+                <div className="max-w-4xl mx-auto">
+                    <div className="space-y-8">
+                        {buildSteps.map((step, i) => (
+                            <div key={i} className="flex gap-6">
+                                {/* Step number */}
+                                <div className="shrink-0">
+                                    <div className="w-12 h-12 rounded-full bg-[#191314] text-white flex items-center justify-center font-bold text-sm">
+                                        {step.step}
+                                    </div>
+                                </div>
+
+                                {/* Content */}
+                                <div className="flex-1">
+                                    <div className="mb-2">
+                                        <h3 className="text-lg font-bold text-[#191314]">{step.title}</h3>
+                                        <p className="text-sm text-[#666666]">{step.subtitle}</p>
+                                    </div>
+                                    <p className="text-[#666666] mb-3">{step.description}</p>
+                                    <ul className="space-y-1">
+                                        {step.details.map((detail, j) => (
+                                            <li key={j} className="text-sm text-[#666666] flex items-start gap-2">
+                                                <span className="text-[#191314] font-bold">•</span>
+                                                {detail}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* The Iteration Loop */}
+            <section className="py-16 px-6 bg-[#f4f4f4]">
+                <div className="max-w-4xl mx-auto">
+                    <h2 className="text-2xl font-bold text-[#191314] mb-4">The Iteration Loop</h2>
+                    <p className="text-[#666666] mb-8">
+                        Prompt → Generate → Run → Observe → Fix → Repeat. Here are some real examples:
+                    </p>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        {iterations.map((item, i) => (
+                            <div key={i} className="bg-white rounded-xl p-5">
+                                <p className="text-sm text-[#666666] mb-2 italic">&quot;{item.prompt}&quot;</p>
+                                <p className="text-[#191314] font-medium">→ {item.result}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Tech Stack */}
+            <section className="py-16 px-6">
+                <div className="max-w-4xl mx-auto">
+                    <h2 className="text-2xl font-bold text-[#191314] mb-4">The Stack</h2>
+                    <p className="text-[#666666] mb-8">
+                        Built almost entirely on free tiers. Total recurring cost: $0/month (excluding AI assistant).
+                    </p>
+
+                    <div className="space-y-3">
+                        {techStackItems.map((item, i) => (
+                            <div key={i} className="flex items-center justify-between bg-[#f4f4f4] rounded-xl p-4">
+                                <div className="flex items-center gap-3">
+                                    <span className="font-bold text-[#191314]">{item.name}</span>
+                                    <span className="text-sm text-[#666666]">{item.role}</span>
+                                </div>
+                                <span className={`text-xs px-2 py-1 rounded-full font-medium ${item.free
+                                    ? 'bg-[#ecf95a] text-[#191314]'
+                                    : 'bg-[#191314] text-white'
+                                    }`}>
+                                    {item.free ? 'Free tier' : item.note}
+                                </span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Key Takeaways */}
+            <section className="py-16 px-6 bg-[#191314]">
+                <div className="max-w-4xl mx-auto">
+                    <h2 className="text-2xl font-bold text-white mb-8">Key Takeaways</h2>
+
+                    <div className="space-y-3">
+                        {takeaways.map((item, i) => (
+                            <div key={i} className="flex items-start gap-3 bg-[#2a2a2a] rounded-xl p-4">
+                                <span className="text-[#ecf95a] font-bold">✓</span>
+                                <p className="text-neutral-300">{item}</p>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className="mt-8 p-5 bg-[#ecf95a] rounded-xl">
+                        <p className="font-bold text-[#191314] mb-2">The Balance</p>
+                        <p className="text-[#191314]">
+                            AI scaffolding + human domain expertise + tight scope = shipped product. Claude handles the boilerplate, you handle the decisions.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            {/* Back Navigation */}
+            <section className="py-16 px-6 bg-[#f4f4f4]">
                 <div className="max-w-4xl mx-auto flex flex-wrap gap-4">
                     <Link
                         href="/projects/app-experiments"
