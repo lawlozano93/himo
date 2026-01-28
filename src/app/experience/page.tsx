@@ -1,9 +1,10 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import Footer from "@/components/Footer";
+import Footer from "@/components/sections/Footer";
 import { ProfileIdCard } from "@/components/ProfileIdCard";
 import { Timeline } from "@/components/ui/timeline";
 import SubtlePattern from "@/components/SubtlePattern";
+import ScrollColorTrigger from "@/components/ui/ScrollColorTrigger";
 
 export const metadata: Metadata = {
     title: "Human of Himo - Lawrrence Lozano",
@@ -121,6 +122,7 @@ const skills = [
     "Strategic Oversight of Internal Tools & BI Implementation",
     "Cross-Functional Team Collaboration",
     "Customer Success & Account Growth",
+    "Customer Success Manager",
 ];
 
 const contact = {
@@ -134,69 +136,71 @@ export default function ExperiencePage() {
     return (
         <>
             {/* Header */}
-            <section className="pt-28 pb-12 px-6 relative">
-                <SubtlePattern variant="shapes" />
-                <div className="max-w-5xl mx-auto relative z-10">
-                    <Link
-                        href="/"
-                        className="inline-flex items-center gap-2 text-[#666666] hover:text-[#191314] transition-colors mb-8"
-                    >
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            strokeWidth={2}
-                            stroke="currentColor"
-                            className="w-4 h-4"
+            <ScrollColorTrigger color="#ffffff" matchNavbar>
+                <section className="pt-28 pb-12 px-6 relative">
+                    <SubtlePattern variant="shapes" />
+                    <div className="max-w-5xl mx-auto relative z-10">
+                        <Link
+                            href="/"
+                            className="inline-flex items-center gap-2 text-[#666666] hover:text-[#191314] transition-colors mb-8"
                         >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
-                            />
-                        </svg>
-                        Back to Himo
-                    </Link>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                strokeWidth={2}
+                                stroke="currentColor"
+                                className="w-4 h-4"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
+                                />
+                            </svg>
+                            Back to Home
+                        </Link>
 
-                    <div className="flex flex-col lg:flex-row gap-12 items-start">
-                        {/* ID Card */}
-                        <div className="flex-shrink-0">
-                            <ProfileIdCard
-                                name="Lawrrence Lozano"
-                                title="Customer Success Manager"
-                                email="lawlozano93@gmail.com"
-                                location="Cebu City, Philippines"
-                                phone="+63 998 596 6173"
-                            />
-                        </div>
+                        <div className="flex flex-col lg:flex-row gap-12 items-start">
+                            {/* ID Card */}
+                            <div className="flex-shrink-0">
+                                <ProfileIdCard
+                                    name="Lawrrence Lozano"
+                                    title="Customer Success Manager"
+                                    email="lawlozano93@gmail.com"
+                                    location="Cebu City, Philippines"
+                                    phone="+63 998 596 6173"
+                                />
+                            </div>
 
-                        {/* Text content */}
-                        <div className="flex-1">
-                            <h1 className="text-4xl md:text-5xl font-bold text-[#191314] mb-4">
-                                Human of Himo
-                            </h1>
-                            <p className="text-[#666666] text-base leading-relaxed mb-4">
-                                Strategic and results driven Customer Success Manager with a strong foundation in software engineering leadership and operational excellence. Specialized in bridging the gap between complex technical systems and measurable business outcomes for enterprise clients in the B2B SaaS space.
-                            </p>
-                            <p className="text-[#666666] text-base leading-relaxed mb-6">
-                                Focused on strategic partnership and cross functional collaboration, I leverage my background in engineering and project management to align technology with organizational goals. I am dedicated to fostering customer growth and scaling business impact while continuously evolving alongside the organizations I serve.
-                            </p>
+                            {/* Text content */}
+                            <div className="flex-1">
+                                <h1 className="text-4xl md:text-5xl font-bold text-[#191314] mb-4">
+                                    Human of Himo
+                                </h1>
+                                <p className="text-[#666666] text-base leading-relaxed mb-4">
+                                    Strategic and results driven Customer Success Manager with a strong foundation in software engineering leadership and operational excellence. Specialized in bridging the gap between complex technical systems and measurable business outcomes for enterprise clients in the B2B SaaS space.
+                                </p>
+                                <p className="text-[#666666] text-base leading-relaxed mb-6">
+                                    Focused on strategic partnership and cross functional collaboration, I leverage my background in engineering and project management to align technology with organizational goals. I am dedicated to fostering customer growth and scaling business impact while continuously evolving alongside the organizations I serve.
+                                </p>
 
-                            {/* Skills inline */}
-                            <div className="flex flex-wrap gap-2">
-                                {skills.map((skill) => (
-                                    <span
-                                        key={skill}
-                                        className="px-3 py-1.5 bg-[#f4f4f4] rounded-full text-sm font-medium text-[#191314] hover:bg-[#ecf95a] transition-colors cursor-default"
-                                    >
-                                        {skill}
-                                    </span>
-                                ))}
+                                {/* Skills inline */}
+                                <div className="flex flex-wrap gap-2">
+                                    {skills.map((skill) => (
+                                        <span
+                                            key={skill}
+                                            className="px-3 py-1.5 bg-[#f4f4f4] rounded-full text-sm font-medium text-[#191314] hover:bg-[#ecf95a] transition-colors cursor-default"
+                                        >
+                                            {skill}
+                                        </span>
+                                    ))}
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            </ScrollColorTrigger>
 
             {/* How This Background Shapes Himo */}
             <section className="py-12 px-6 bg-[#f4f4f4]">
@@ -299,24 +303,28 @@ export default function ExperiencePage() {
             </section>
 
             {/* Contact CTA */}
-            <section className="py-16 px-6 bg-[#ecf95a]">
-                <div className="max-w-4xl mx-auto text-center">
-                    <h2 className="text-2xl font-bold text-[#191314] mb-4">
-                        Let&apos;s work together
-                    </h2>
-                    <p className="text-[#191314] text-sm mb-6">
-                        Open to opportunities in Customer Success, Project Management, and Technical Leadership.
-                    </p>
-                    <a
-                        href="mailto:lawlozano93@gmail.com"
-                        className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#191314] text-white font-semibold hover:bg-[#333] transition-colors"
-                    >
-                        Get in touch
-                    </a>
-                </div>
-            </section>
+            <ScrollColorTrigger color="#ecf95a" matchNavbar>
+                <section className="py-16 px-6 bg-[#ecf95a]">
+                    <div className="max-w-4xl mx-auto text-center">
+                        <h2 className="text-2xl font-bold text-[#191314] mb-4">
+                            Let&apos;s work together
+                        </h2>
+                        <p className="text-[#191314] text-sm mb-6">
+                            Open to opportunities in Customer Success, Project Management, and Technical Leadership.
+                        </p>
+                        <a
+                            href="mailto:lawlozano93@gmail.com"
+                            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#191314] text-white font-semibold hover:bg-[#333] transition-colors"
+                        >
+                            Get in touch
+                        </a>
+                    </div>
+                </section>
+            </ScrollColorTrigger>
 
-            <Footer />
+            <ScrollColorTrigger color="#191314" matchNavbar>
+                <Footer />
+            </ScrollColorTrigger>
         </>
     );
 }
