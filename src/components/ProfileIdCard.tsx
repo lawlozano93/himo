@@ -30,17 +30,17 @@ export function ProfileIdCard({
                     transformStyle: "preserve-3d",
                 }}
             >
-                {/* Photo */}
+                {/* Photo/GIF */}
                 <div className="mx-1">
-                    <div className="relative aspect-[4/5] w-full overflow-hidden rounded-xl">
+                    <div className="relative aspect-square w-full overflow-hidden rounded-xl">
                         <Image
                             src={photoUrl}
                             alt={name}
                             fill
                             className="object-cover"
                         />
-                        {/* Overlay gradient */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#191314] via-transparent to-transparent opacity-60" />
+                        {/* Overlay gradient - lighter for background images */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#191314] via-transparent to-transparent opacity-40" />
                     </div>
                 </div>
 

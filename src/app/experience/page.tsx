@@ -184,7 +184,7 @@ export default function ExperiencePage() {
                                     email="lawlozano93@gmail.com"
                                     location="Cebu City, Philippines"
                                     phone="+63 998 596 6173"
-                                    photoUrl="/lawrrence-profile.jpg"
+                                    photoUrl="/profile-card-bg.png"
                                 />
                             </div>
 
