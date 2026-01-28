@@ -15,8 +15,7 @@ export default function Navbar() {
     // Text colors based on background
     const textColor = isDark ? "text-white" : "text-[#191314]";
     const navLinkColor = isDark ? "text-[#e5e5e5] hover:text-white" : "text-[#666666] hover:text-[#191314]";
-    const buttonBg = isDark ? "bg-white" : "bg-[#191314]";
-    const buttonText = isDark ? "text-[#191314] hover:bg-[#ecf95a]" : "text-white hover:bg-[#ecf95a] hover:text-[#191314]";
+
 
     useEffect(() => {
         const handleScroll = () => {

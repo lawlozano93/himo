@@ -125,12 +125,7 @@ const skills = [
     "Customer Success Manager",
 ];
 
-const contact = {
-    phone: "+63 998 596 6173",
-    email: "lawlozano93@gmail.com",
-    website: "lawrrence.com",
-    location: "Cebu City, Philippines",
-};
+
 
 export default function ExperiencePage() {
     return (
