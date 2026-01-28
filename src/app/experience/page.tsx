@@ -15,9 +15,8 @@ export const metadata: Metadata = {
 const experience = [
     {
         role: "Customer Success Manager",
-        company: "ThisFish",
-        period: "December 2025 - Present",
-        location: "Remote",
+        company: "ThisFish Inc.",
+        period: "Dec 2025 - Present",
         bullets: [
             "Partner with enterprise customers on business process analysis, translating complex operational challenges into tailored SaaS solutions",
             "Lead end-to-end customer onboarding and implementation, managing project timelines, stakeholder alignment, and ensuring successful software adoption across global teams",
@@ -30,72 +29,94 @@ const experience = [
     {
         role: "Software Engineering Manager",
         company: "Focus Global Inc.",
-        period: "October 2024 - December 2025",
-        location: "Philippines",
+        period: "Oct 2024 - Dec 2025",
         bullets: [
-            "Work directly with the Executive Vice President and Head of Software Engineering, collaborating with C-level executives and department heads to align technology initiatives with business objectives",
-            "Manage the Software Engineering Department, leading the Web Development, Data Engineering, and Internal Tools teams to implement automation and AI-driven optimizations",
-            "Oversee process automation initiatives by identifying operational inefficiencies and implementing AI-powered solutions to enhance productivity and decision-making",
-            "Delivered an AI-powered chat assistant that reduced response times for customer service representatives by 40%",
-            "Built a service analysis AI tool that generates service summaries and recommends customer interaction tones based on past engagements",
-            "Conduct process audits to identify inefficiencies and evaluate opportunities for automation through emerging AI technologies",
+            "Partner with the Executive VP and C-suite to align technology initiatives with business objectives, focusing on digital transformation from manual processes to automated systems",
+            "Lead strategic direction for 12-person engineering team across Web Development (5), Data Engineering (3), and Internal Tools (4)",
+            "Led cross-system automation planning and technical evaluation with engineering leads for strategic technology decisions",
+            "Champion AI automation strategy through ChatGPT-powered multi-brand customer service assistant, reducing response times by 40% and service analysis AI leveraging MCP-BigQuery integration for customer information analysis",
+            "Delivered automation solutions, saving 60-90 hours monthly across stakeholders through centralized order processing systems, replacing error-prone manual spreadsheets",
+            "Translated executive automation objectives into 3-4 month technical roadmaps, modularizing manual processes across Warehouse, Servicing, and Data Management teams",
+            "Oversee 6-10 concurrent automation and development projects, with team allocations ranging from individual developers to 3-person project teams",
+            "Conducted operational assessments to identify AI automation opportunities",
         ],
     },
     {
         role: "Technical Project Manager",
-        company: "Focus Global Inc.",
-        period: "October 2023 - September 2024",
-        location: "Philippines",
+        company: "Focus Global Inc",
+        period: "Oct 2023 - Oct 2024",
         bullets: [
-            "Conducted business process audits and collaborated with department heads to identify automation opportunities that improved efficiency",
-            "Managed the development and implementation of internal tools, dashboards, and automation systems to enhance workflows",
-            "Led the transition to Metabase, improving business intelligence capabilities and empowering teams with data insights",
-            "Liaised between executive leadership, engineering teams, and business units, ensuring automation initiatives aligned with strategic goals",
+            "Orchestrated business process audits, identifying opportunities to transform manual workflows into automated systems",
+            "Led strategic implementation of Metabase, creating unified data analytics capabilities for cross-departmental decision making",
+            "Developed automation systems and internal tools, transforming paper-based processes into streamlined digital workflows",
+            "Bridged executive leadership and engineering teams, ensuring technology initiatives aligned with operational efficiency goals",
         ],
     },
     {
         role: "Technical Project Manager",
-        company: "Symph Inc.",
-        period: "January 2022 - September 2023",
-        location: "Philippines",
+        company: "Symph",
+        period: "Jan 2022 - Sep 2023",
         bullets: [
-            "Managed software projects for government transparency platforms, SaaS solutions, and startups, ensuring timely and budget-conscious delivery",
-            "Collaborated directly with startup founders, C-level executives, government undersecretaries, and business owners to gather requirements and define objectives",
-            "Coordinated cross-functional teams for seamless execution across design, development, and QA phases",
+            "Managed government transparency platforms, including Freedom of Information system, enabling citizen inquiries and DIME (Digital Information for Monitoring and Evaluation) for the Department of Budget and Management",
+            "Managed 3-5 concurrent software projects spanning government, SaaS solutions, and startups with teams of 1-10 developers",
+            "Collaborated directly with startup founders, C-level executives, and government undersecretaries to define technical requirements and strategic objectives",
+            "Managed project timelines, resource allocation, and stakeholder communication",
         ],
     },
     {
         role: "Project Manager",
         company: "Peregrine Consulting Group",
-        period: "May 2021 - January 2022",
-        location: "Philippines",
+        period: "May 2021 - Jan 2022",
         bullets: [
-            "Managed the development of SaaS platforms and WordPress landing pages",
-            "Worked closely with business owners and executives to define requirements and meet objectives",
-            "Created project plans, managed resources, and ensured timely updates",
+            "Managed the delivery of SaaS platforms and WordPress landing pages, ensuring projects were aligned with client objectives and completed within scope and timelines",
+            "Worked closely with business owners and C-level executives to define project requirements, set priorities, and deliver tailored solutions that addressed their business needs",
+            "Created detailed project plans, managed resources, and coordinated with design and development teams to ensure seamless execution and delivery",
+            "Maintained regular communication with stakeholders, providing updates on progress, managing expectations, and addressing any risks or roadblocks",
+            "Facilitated process improvements and introduced tools to streamline project tracking and enhance overall team productivity",
+        ],
+    },
+    {
+        role: "Application Developer",
+        company: "Accenture",
+        period: "Mar 2020 - Jun 2021",
+        bullets: [
+            "Transitioned across multiple roles, contributing to projects in remote support, application development, and data-driven solutions",
+            "Provided technical assistance as a Remote Support Engineer, addressing customer queries and ensuring efficient resolution of technical issues",
+            "Developed and maintained applications with a focus on data-related functionality, aligning deliverables with project requirements and business needs",
+            "Completed training in Java development and Japanese language, attaining N4 proficiency to enhance communication and technical skills in client-facing roles",
+            "Collaborated with cross-functional teams, leveraging strong analytical and communication skills to deliver results within tight timelines",
         ],
     },
     {
         role: "UI Designer | Project Manager",
         company: "Freelance",
-        period: "June 2019 - March 2020",
-        location: "Philippines",
+        period: "Jun 2019 - Mar 2020",
         bullets: [
-            "Developed and customized user interfaces for landing pages and internal tools using WordPress builders",
-            "Managed end-to-end project delivery for WordPress websites and LMS platforms",
-            "Collaborated with clients to gather requirements, define project scope, and deliver tailored solutions",
+            "Developed and customized user interfaces for landing pages and internal tools directly using WordPress builders, focusing on usability, functionality, and meeting client requirements",
+            "Managed end-to-end project delivery for WordPress websites and LMS platforms, coordinating with developers and stakeholders to ensure seamless execution",
+            "Collaborated with clients to gather requirements, define project scope, and deliver tailored solutions aligned with business goals",
+            "Oversaw timelines, budgets, and deliverables, ensuring projects were completed on time and met quality standards",
+            "Implemented process improvements to streamline workflows and enhance collaboration between team members and clients",
         ],
     },
     {
-        role: "Application Developer / Frontend Developer / Shift Lead",
+        role: "Frontend Web Developer",
         company: "Accenture",
-        period: "August 2016 - June 2019 / March 2020 - June 2021",
-        location: "Philippines",
+        period: "Jun 2018 - Jun 2019",
         bullets: [
-            "Worked on application development, data-driven solutions, and website customization using Sitecore",
-            "Ensured alignment with business requirements and delivered high-quality solutions in collaboration with cross-functional teams",
-            "Led network operations and remote support, managing escalations and troubleshooting connectivity issues",
-            "Maintained detailed documentation to improve efficiency and service-level adherence",
+            "Developed and customized websites using Sitecore, implementing designs provided by project managers with HTML and CSS to ensure accurate and functional translations",
+            "Collaborated with QA teams to ensure all deliverables met quality standards and client requirements",
+        ],
+    },
+    {
+        role: "Network Engineer / Shift Lead",
+        company: "Accenture",
+        period: "Aug 2016 - Jun 2018",
+        bullets: [
+            "Oversaw the team’s shift deliverables as a shift lead, ensuring smooth operations and adherence to service-level agreements",
+            "Collaborated with remote engineers to troubleshoot network connectivity issues, coordinating with vendors and customer NOCs for effective resolution",
+            "Managed escalations from customers, addressing critical issues on calls, and ensuring timely updates to management and stakeholders",
+            "Maintained documentation of network incidents and troubleshooting processes to support continuous improvement and knowledge sharing",
         ],
     },
 ];
@@ -120,9 +141,7 @@ const skills = [
     "Stakeholder Engagement",
     "Team Leadership & Mentorship",
     "Strategic Oversight of Internal Tools & BI Implementation",
-    "Cross-Functional Team Collaboration",
     "Customer Success & Account Growth",
-    "Customer Success Manager",
 ];
 
 
@@ -165,6 +184,7 @@ export default function ExperiencePage() {
                                     email="lawlozano93@gmail.com"
                                     location="Cebu City, Philippines"
                                     phone="+63 998 596 6173"
+                                    photoUrl="/lawrrence-profile.jpg"
                                 />
                             </div>
 
@@ -206,21 +226,24 @@ export default function ExperiencePage() {
                     <p className="text-[#666666] text-base leading-relaxed mb-6">
                         Started as an engineer building applications. Became a project manager understanding how teams ship. Then led engineering teams at scale. Now translating all of that into customer success and patterns other teams can use.
                     </p>
+                    <p className="text-[#666666] text-base leading-relaxed mb-6">
+                        Himo (means &apos;create&apos; in Waray) is my approach to building—rapid AI-powered systems that solve real operational friction. I design, connect systems, deploy full-stack solutions, and centralize operations to help teams ship faster and work smarter.
+                    </p>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                         <div className="flex items-start gap-3">
-                            <span className="text-[#ecf95a] text-xl">✓</span>
+                            <span className="text-black text-xl">✓</span>
                             <p className="text-[#666666] text-sm">Understanding what&apos;s technically feasible (and what&apos;s not)</p>
                         </div>
                         <div className="flex items-start gap-3">
-                            <span className="text-[#ecf95a] text-xl">✓</span>
+                            <span className="text-black text-xl">✓</span>
                             <p className="text-[#666666] text-sm">Managing the chaos of building and shipping at scale</p>
                         </div>
                         <div className="flex items-start gap-3">
-                            <span className="text-[#ecf95a] text-xl">✓</span>
+                            <span className="text-black text-xl">✓</span>
                             <p className="text-[#666666] text-sm">Knowing what customer success and operations teams actually need</p>
                         </div>
                         <div className="flex items-start gap-3">
-                            <span className="text-[#ecf95a] text-xl">✓</span>
+                            <span className="text-black text-xl">✓</span>
                             <p className="text-[#666666] text-sm">Prototyping ideas quickly without getting stuck in analysis</p>
                         </div>
                     </div>
@@ -246,9 +269,6 @@ export default function ExperiencePage() {
                                         <div className="flex flex-wrap gap-2 items-center mb-2">
                                             <span className="bg-[#ecf95a] px-3 py-1 rounded-full text-sm font-medium text-[#191314]">
                                                 {job.company}
-                                            </span>
-                                            <span className="text-sm text-[#666666]">
-                                                {job.location}
                                             </span>
                                         </div>
                                         <p className="text-sm text-[#666666]">{job.period}</p>
@@ -298,24 +318,30 @@ export default function ExperiencePage() {
             </section>
 
             {/* Contact CTA */}
-            <ScrollColorTrigger color="#ecf95a" matchNavbar>
-                <section className="py-16 px-6 bg-[#ecf95a]">
-                    <div className="max-w-4xl mx-auto text-center">
-                        <h2 className="text-2xl font-bold text-[#191314] mb-4">
-                            Let&apos;s work together
-                        </h2>
-                        <p className="text-[#191314] text-sm mb-6">
-                            Open to opportunities in Customer Success, Project Management, and Technical Leadership.
-                        </p>
-                        <a
-                            href="mailto:lawlozano93@gmail.com"
-                            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#191314] text-white font-semibold hover:bg-[#333] transition-colors"
-                        >
-                            Get in touch
-                        </a>
-                    </div>
-                </section>
-            </ScrollColorTrigger>
+            {/* Contact CTA removed */}
+
+            <div className="py-12 flex justify-center pb-20">
+                <Link
+                    href="/"
+                    className="inline-flex items-center gap-2 text-[#666666] hover:text-[#191314] transition-colors"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={2}
+                        stroke="currentColor"
+                        className="w-4 h-4"
+                    >
+                        <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
+                        />
+                    </svg>
+                    Back to Home
+                </Link>
+            </div>
 
             <ScrollColorTrigger color="#191314" matchNavbar>
                 <Footer />
