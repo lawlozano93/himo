@@ -1,6 +1,3 @@
-/* Import Inter font from Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
-
 @import "tailwindcss";
 
 @custom-variant dark (&:is(.dark *));
@@ -11,7 +8,7 @@
   --lime: #ecf95a;
   --gray: #f4f4f4;
   --white: #ffffff;
-  --text-secondary: #666666;
+  --text-secondary: #595959;
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -24,7 +21,7 @@
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
   --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
+  --muted-foreground: oklch(0.45 0 0);
   --accent: oklch(0.97 0 0);
   --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
@@ -100,7 +97,7 @@ html {
 body {
   background: var(--white);
   color: var(--black);
-  font-family: 'Inter', system-ui, sans-serif;
+  /* font-family: 'Inter', system-ui, sans-serif; - Handled by next/font */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -121,7 +118,9 @@ body {
 button,
 a,
 .interactive {
-  transition: all 0.2s ease;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
 }
 
 /* Floating animation for icons */

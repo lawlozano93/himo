@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/context/ThemeContext";
 import Navbar from "@/components/Navbar";
+
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Himo | AI Systems & Startup Ops for Teams",
@@ -31,7 +34,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="antialiased bg-white text-gray-900">
+      <body className={`${inter.className} antialiased bg-white text-gray-900`}>
         <ThemeProvider>
           <Navbar />
           <main>{children}</main>
